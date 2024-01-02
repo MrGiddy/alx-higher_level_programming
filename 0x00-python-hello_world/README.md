@@ -76,3 +76,26 @@ Complete this [source code](https://github.com/alx-tools/0x00.py/blob/master/8-c
 Write a Python script that prints "The Zen of Python", by Tim Peters, followed by a new line.
 * Your script should be maximum 98 characters long (please check with wc -m 9-easter_egg.py)
 
+### 10-check_cycle.c
+Technical interview preparation
+
+* You are not allowed to google anything
+* Witeboard first
+* This task and all future technical interview prep tasks will include checks for efficiency of your solution, i.e. is your solution fast enough, does your solution require extra memory usate/mallocs, etc.
+
+Write a function in C that checks if a singly linked list has a cycle in it.
+
+* Prototype: int check_cycle(list int_t *list);
+* Return: 0 if there is no cycle, 1 if there is a cycle
+
+Requirements
+
+* Only these functions are allowed: write, printf, putchar, puts, malloc, free
+
+### 100-write.py
+Write a Python script that prints exactly and that piece of art is useful - Dora Korpar, 2014-10-19, followed by a new line.
+
+* Use the function write from the sys module
+* You are not allowed to use print
+* Your script should print to stderr
+* Your script should exit with the status code 1
