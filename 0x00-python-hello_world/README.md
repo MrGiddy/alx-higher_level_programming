@@ -35,7 +35,7 @@ Complete the source code in order to print the float stored in the variable numb
 - You have to use f-strings
 
 ### 5-print_string.py
-Complete this source code in order to print 3 times a string stored in the variable str, followed by its first 9 characters.
+Complete this [source code](https://github.com/alx-tools/0x00.py/blob/master/5-print_string.py) in order to print 3 times a string stored in the variable str, followed by its first 9 characters.
 
 - You can find the source code here
 - The output of the program should be:
@@ -47,9 +47,18 @@ Complete this source code in order to print 3 times a string stored in the varia
 - Your program should be maximum 5 lines long
 
 ### 6-concat.py
-Complete this source code to print Welcome to Holberton School!
+Complete this [source code](https://github.com/alx-tools/0x00.py/blob/master/6-concat.py) to print Welcome to Holberton School!
 
 - You can find the source code here
 - You are not allowed to use any loops or conditional statements.
 - You have to use the variables str1 and str2 in your new line of code
 - Your program should be exactly 5 lines long
+
+### 7-edges.py
+Complete this [source code](https://github.com/alx-tools/0x00.py/blob/master/7-edges.py)
+
+* You are not allowed to use any loops or conditional statements
+* Your program should be exactly 8 lines long
+* word_first_3 should contain the first 3 letters of the variable word
+* word_last_2 should contain the last 2 letters of the variable word
+* middle_word should contain the value of the variable word without the first and last letters
