@@ -90,3 +90,46 @@ Write a program that prints numbers from 0 to 99.
 * You can only use one loop in your code
 * You are not allowed to store numbers or strings in a variable
 * You are not allowed to import any module
+
+### 6-print_comb3.py
+Write a program that prints all possible different combinations of two digits.
+
+* Numbers must be separated by ,, followed by a space
+* The two digits must be different
+* 01 and 10 are considered the same combination of the two digits 0 and 1
+* Print only the smallest combination of two digits
+* Numbers should be printed in ascending order, with two digits
+* The last number should be followed by a new line
+* You can only use no more than 3 print functions with string format
+* You can only use no more than 2 loops in your code
+* You are not allowed to store numbers or strings in a variable
+* You are not allowed to import any module
+
+### 7-islower.py
+Write a function that checks for lowercase character.
+* Prototype: def is lower(c):
+* Returns True if c is loercase
+* Returns False otherwise
+* You are not allowed to import any module
+* YOu are not allowed to use str.upper() and str.isupper()
+* [Tips: ord()](https://docs.python.org/3.4/library/functions.html?highlight=ord#ord)
+* You don't need to uderstand __import__
+```
+guillaume@ubuntu:~/0x01$ cat 7-main.py
+#!/usr/bin/env python3
+islower = __import__('7-islower').islower
+
+print("a is {}".format("lower" if islower("a") else "upper"))
+print("H is {}".format("lower" if islower("H") else "upper"))
+print("A is {}".format("lower" if islower("A") else "upper"))
+print("3 is {}".format("lower" if islower("3") else "upper"))
+print("g is {}".format("lower" if islower("g") else "upper"))
+
+guillaume@ubuntu:~/0x01$ ./7-main.py
+a is lower
+H is upper
+A is upper
+3 is upper
+g is lower
+guillaume@ubuntu:~/0x01$ 
+```
