@@ -18,7 +18,7 @@ Write a program that imports the function def add(a, b): from the file add_0.py 
 * Your program should print: \<a value\> + \<b value\> = \<add(a, b) value\> followed by a new line
 * You can only use the word add_0 once in your code
 * You are not allowed to use * for importing or __import__
-* Your code should not be executed when importted - by using __import__, like the example below
+* Your code should not be executed when importted - by using \_\_import\_\_, like the example below
 ```python
 guillaume@ubuntu:~/0x02$ cat add_0.py
 #!/usr/bin/python3
@@ -54,7 +54,7 @@ Write a program that imports functions from the file calculator_1.py, does some 
 * a and b must be defined in w different lines: a = 10 and another b = 5
 * Your program should call each of the imported functions. See example below for format
 * the word calculator_1 should be used only once in your file
-* You are not allowed to use * form importing or __import__
+* You are not allowed to use * form importing or \_\_import\_\_
 * Your code should not be executed when imported
 
 ### 2-args.py
@@ -89,5 +89,26 @@ Write a program that prints all the names defined by the compiled module [hidden
 ### 5-variable_load.py
 
 Write a program that imports the variable a from the file variable_load_5.py and prints its value.
-* You are not allowed to use * for importing or __import__
+* You are not allowed to use * for importing or i\_\_import\_\_
+* Your code should not be executed when imported
+
+
+## 100-my_calculator.py
+Write a program that imports all functions from the file calculator\_1.py and handles basic operations.
+
+* Usage: ./100-my\_calculator.py a operator b
+    * If the number of arguments is not 3, your program has to:
+        - print Usage: ./100-my\_calculator.py \<a\> \<operator\> \<b\> followed with a new line
+        - exit with the value 1
+    * operator can be:
+        - + for addition
+        - - for subtraction
+        - * for multiplication
+        - / for division
+    * If the operator is not one of the above:
+        - print Unknown operator. Available operators: +, -, * and / followed with a new line
+        - exit with the value 1
+    * You can cast a and b into integers by using int() (you can assume that all arguments will be castable into integers)
+    * The result should be printed like this: \<a\> \<operator\> \<b\> = \<result\>, followed by a new line
+* You are not allowed to use \* for importing or __import__
 * Your code should not be executed when imported
