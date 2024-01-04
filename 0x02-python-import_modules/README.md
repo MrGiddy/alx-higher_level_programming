@@ -7,7 +7,7 @@ Read or Watch
 * [Pycodestyle - Style Guide for Python Code](https://pypi.org/project/pycodestyle/)
 
 ### 0-add.py
-Write a program that imports the function def add(a, b): from the file add_0.py and prints the result of the addition 1 + 2 = 3
+Write a program that imports the function def add(a, b): from the file add\_0.py and prints the result of the addition 1 + 2 = 3
 
 * You have to use print function with string format to display integers
 * You have to assign:
@@ -17,7 +17,7 @@ Write a program that imports the function def add(a, b): from the file add_0.py 
 * a and b must be defined in two different lines: a = 1 and another b = 2
 * Your program should print: \<a value\> + \<b value\> = \<add(a, b) value\> followed by a new line
 * You can only use the word add_0 once in your code
-* You are not allowed to use * for importing or __import__
+* You are not allowed to use * for importing or \_\_import\_\_
 * Your code should not be executed when importted - by using \_\_import\_\_, like the example below
 ```python
 guillaume@ubuntu:~/0x02$ cat add_0.py
@@ -36,15 +36,15 @@ def add(a, b):
 
 guillaume@ubuntu:~/0x02$ ./0-add.py
 1 + 2 = 3
-guillaume@ubuntu:~/0x02$ cat 0-import_add.py
-__import__("0-add")
-guillaume@ubuntu:~/0x02$ python3 0-import_add.py 
+guillaume@ubuntu:~/0x02$ cat 0-import\_add.py
+\_\_import\_\_("0-add")
+guillaume@ubuntu:~/0x02$ python3 0-import\_add.py 
 guillaume@ubuntu:~/0x02$ 
 ```
 
 ### 1-calculation.py
 
-Write a program that imports functions from the file calculator_1.py, does some Maths, and prints the result.
+Write a program that imports functions from the file calculator\_1.py, does some Maths, and prints the result.
 
 * Do not use the function print (with string format to display integers) more than 4 times
 * You have to define:
@@ -89,26 +89,32 @@ Write a program that prints all the names defined by the compiled module [hidden
 ### 5-variable_load.py
 
 Write a program that imports the variable a from the file variable_load_5.py and prints its value.
-* You are not allowed to use * for importing or i\_\_import\_\_
+* You are not allowed to use * for importing or \_\_import\_\_
 * Your code should not be executed when imported
 
 
-## 100-my_calculator.py
+### 100-my_calculator.py
 Write a program that imports all functions from the file calculator\_1.py and handles basic operations.
 
-* Usage: ./100-my\_calculator.py a operator b
+* Usage: ./100-my_calculator.py a operator b
     * If the number of arguments is not 3, your program has to:
-        - print Usage: ./100-my\_calculator.py \<a\> \<operator\> \<b\> followed with a new line
+        - print Usage: ./100-my_calculator.py \<a\> \<operator\> \<b\> followed with a new line
         - exit with the value 1
     * operator can be:
-        - + for addition
-        - - for subtraction
-        - * for multiplication
+        - \+ for addition
+        - \- for subtraction
+        - \* for multiplication
         - / for division
     * If the operator is not one of the above:
         - print Unknown operator. Available operators: +, -, * and / followed with a new line
         - exit with the value 1
     * You can cast a and b into integers by using int() (you can assume that all arguments will be castable into integers)
     * The result should be printed like this: \<a\> \<operator\> \<b\> = \<result\>, followed by a new line
-* You are not allowed to use \* for importing or __import__
+* You are not allowed to use \* for importing or \_\_import\_\_
 * Your code should not be executed when imported
+
+### 101-easy_print.py
+Write a program that prints #pythoniscool, followed by a new line, in the standard output.
+
+* Your program should be maximum 2 lines long
+* You are not allowed to use print or eval or open or import sys in your file 101-easy_print.py 
