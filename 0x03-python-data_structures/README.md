@@ -54,3 +54,13 @@ Write a function that removes all characters c and C from a string.
 * The function should return the new string
 * You are not allowed to import any module
 * You are not allowed to use str.replace()
+
+### 6-print_matrix_integer.py
+Write a function that prints a matrix of integers.
+
+* Prototype: def print_matrix_integer(matrix=[[]]):
+* Format: see example
+* You are not allowed to import any module
+* You can assume that the list only contains integers
+* You are not allowed to cast integers into strings
+* You have to use str.format() to print integers
