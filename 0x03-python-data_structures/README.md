@@ -108,3 +108,9 @@ Write a function that deletes the item at a specific position in a list.
 * If idx is negative or out of range, nothing change (returns the same list)
 * You are not allowed to use pop()
 * You are not allowed to import any module
+
+### 12-switch.py
+Complete the source code in order to switch the value or a and b
+* You can find the source code [here](https://github.com/alx-tools/0x03.py/blob/master/12-switch_py)
+* Your code should be inserted where the comment is (line 4)
+* Your program should be exactly 5 lines long
