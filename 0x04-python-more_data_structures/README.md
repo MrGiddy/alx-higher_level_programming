@@ -28,3 +28,9 @@ Write a function that replaces all occurrences of an element by another in a new
 Write a function that adds all unique integers in a list (only once for each integer)
 * Prototype: def uniq_add(my_list=[]):
 * You are not allowed to import any module
+
+### 3-common_elements.py
+
+Write a function that returns a set of common elements in two sets.
+* Prototype: def common_elements(set_1, set_2):
+* You are not allowed to import any module
