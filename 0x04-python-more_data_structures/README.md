@@ -125,7 +125,7 @@ Create a function def roman_to_int(roman_string): that converts a [Roman numeral
 * def roman_to_int(roman_string) must return an integer
 * If the roman_string is not a string or None, return 0
 
-### 13-weight_average.py
+### 100-weight_average.py
 
 Write a function that returns the weighted average of all integers tuple (<score>, \<weight\>)
 
@@ -133,7 +133,7 @@ Write a function that returns the weighted average of all integers tuple (<score
 * Returns 0 if the list is empty
 * You are not allowed to import any module
 
-### 100-square_matrix.py
+### 101-square_matrix.py
 
 Write a function that computes the square value of all integers of a matrix using map
 
@@ -147,3 +147,12 @@ Write a function that computes the square value of all integers of a matrix usin
 * You have to use map
 * You are not allowed to use for or while
 * Your file should be max 3 lines
+
+### 102-complex_delete.py
+
+Write a function that deletes keys with a specific value in a dictionary.
+
+* Prototype: def complex_delete(a_dictionary, value):
+* If the value doesn’t exist, the dictionary won’t change
+* All keys having the searched value have to be deleted
+* You are not allowed to import any module
