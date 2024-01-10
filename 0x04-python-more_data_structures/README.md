@@ -111,3 +111,24 @@ Write a function that returns a list with all values multiplied by a number with
 * You are not allowed to import any module
 * You have to use map
 * Your file should be max 3 lines
+
+### 12-roman_to_int.py
+
+Technical interview preparation:
+
+* You are not allowed to google anything
+* Whiteboard first
+
+Create a function def roman_to_int(roman_string): that converts a [Roman numeral](https://en.wikipedia.org/wiki/Roman_numerals) to an integer.
+
+* You can assume the number will be between 1 to 3999.
+* def roman_to_int(roman_string) must return an integer
+* If the roman_string is not a string or None, return 0
+
+### 13-weight_average.py
+
+Write a function that returns the weighted average of all integers tuple (<score>, \<weight\>)
+
+* Prototype: def weight_average(my_list=[]):
+* Returns 0 if the list is empty
+* You are not allowed to import any module
