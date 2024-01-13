@@ -146,3 +146,11 @@ Write a function that prints a string in uppercase followed by a new line.
 * Tips: ord()
 
 You don’t need to understand __import__
+
+### 9-print_last_digit.py
+Write a function that prints the last digit of a number.
+
+* Prototype: def print_last_digit(number):
+* Returns the value of the last digit
+* You are not allowed to import any module
+* You don’t need to understand __import__
