@@ -180,6 +180,16 @@ Write a function that prints the numbers from 1 to 100 separated by a space.
 * You are not allowed to import any module
 * You don’t need to understand __import__
 
+### 13-insert_node.c
+Technical interview preparation:
+
+* You are not allowed to google anything
+* Whiteboard first
+Write a function in C that inserts a number into a sorted singly linked list.
+
+* Prototype: listint_t *insert_node(listint_t **head, int number);
+* Return: the address of the new node, or NULL if it failed
+
 ### 100-print_tebahpla.py
 Write a program that prints the ASCII alphabet, in reverse order, alternating lowercase and uppercase (z in lowercase and Y in uppercase) , not followed by a new line.
 * You can only use one print function with string format
