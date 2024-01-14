@@ -170,6 +170,16 @@ Write a function that computes a to the power of b and return the value.
 * You are not allowed to import any module
 You don’t need to understand __import__
 
+### 12-fizzbuzz.py
+Write a function that prints the numbers from 1 to 100 separated by a space.
+
+* For multiples of three print Fizz instead of the number and for multiples of five print Buzz.
+* For numbers which are multiples of both three and five print FizzBuzz.
+* Prototype: def fizzbuzz():
+* Each element should be followed by a space
+* You are not allowed to import any module
+* You don’t need to understand __import__
+
 ### 100-print_tebahpla.py
 Write a program that prints the ASCII alphabet, in reverse order, alternating lowercase and uppercase (z in lowercase and Y in uppercase) , not followed by a new line.
 * You can only use one print function with string format
