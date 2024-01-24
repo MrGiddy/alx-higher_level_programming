@@ -197,6 +197,7 @@ Area: 25
 guillaume@ubuntu:~/0x06$ 
 ```
 
+### 4-square.py
 Write a class Square that defines a square by: (based on 3-square.py)
 
 * Private instance attribute: size:
