@@ -14,8 +14,8 @@ class Node:
             next_node (Node): A reference to the node following current node
         """
 
-        self.__data = data
-        self.__next_node = next_node
+        self.data = data
+        self.next_node = next_node
 
     @property
     def data(self):
@@ -91,8 +91,7 @@ class SinglyLinkedList:
         """
 
         # Create a new_node
-        new_node = Node(None)
-        new_node.data = value
+        new_node = Node(value)
 
         # If list is empty or new_node.data < firstnode.data
         if self.head is None or new_node.data < self.head.data:
