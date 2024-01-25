@@ -11,8 +11,8 @@ class Square:
         Args:
             size (int): Size of a new square
         """
-        self.__size = size
-        self._position = position
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -58,8 +58,11 @@ class Square:
     def position(self, value):
         """Sets the co-ordinates of the current square"""
 
-        if not all(isinstance(item, int) for item in value):
-            raise TypeError('position must be a tuple of 2 positive integers')
-        if not all(i > 0 for i in value):
-            raise TypeError('position must be a tuple of 2 positive integers')
+        message = "position must be a tuple of 2 positive integers"
+        if len(value) != 2:
+            raise TypeError(message)
+        for item in value:
+            if type(item) is not int or item < 0:
+                raise TypeError(message)
+
         self._position = value
