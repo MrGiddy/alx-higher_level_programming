@@ -99,7 +99,7 @@ guillaume@ubuntu:~/0x07$ python3 -c 'print(__import__("0-add_integer").add_integ
 guillaume@ubuntu:~/0x07$
 ```
 
-### 1. Divide a matrix: [2-matrix_divided.py](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/2-matrix_divided.py), [tests/2-matrix_divided.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/tests/2-matrix_divided.txt) 
+### 1. Divide a matrix: ([2-matrix_divided.py](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/2-matrix_divided.py), [tests/2-matrix_divided.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/tests/2-matrix_divided.txt)) 
 
 Write a function that divides all elements of a matrix.
 
@@ -132,7 +132,7 @@ Test passed.
 guillaume@ubuntu:~/0x07$
 ```
 
-### 2. Say my name: [3-say_my_name.py](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/3-say_my_name.py), [tests/3-say_my_name.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/tests/3-say_my_name.txt)
+### 2. Say my name: ([3-say_my_name.py](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/3-say_my_name.py), [tests/3-say_my_name.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/tests/3-say_my_name.txt))
 
 Write a function that prints My name is \<first name\> \<last name\>
 
@@ -163,7 +163,7 @@ Test passed.
 guillaume@ubuntu:~/0x07$ 
 ```
 
-### 3. Print square: [4-print_square.py](), [tests/4-print_square.txt]()
+### 3. Print square: ([4-print_square.py](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/4-print_square.py), [tests/4-print_square.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/tests/4-print_square.txt))
 
 Write a function that prints a square with the character \#.
 
@@ -215,5 +215,60 @@ guillaume@ubuntu:~/0x07$ ./4-main.py
 size must be >= 0
 
 guillaume@ubuntu:~/0x07$ python3 -m doctest -v ./tests/4-print_square.txt
+guillaume@ubuntu:~/0x07$
+```
+
+### 4. Text indentation: ([5-text_indentation.py](), [tests/5-text_indentation.txt]())
+
+Write a function that prints a text with 2 new lines after each of these characters: ., ? and :
+
+* Prototype: def text_indentation(text):
+* text must be a string, otherwise raise a TypeError exception with the message text must be a string
+* There should be no space at the beginning or at the end of each printed line
+* You are not allowed to import any module
+```
+guillaume@ubuntu:~/0x07$ cat 5-main.py
+#!/usr/bin/python3
+text_indentation = __import__('5-text_indentation').text_indentation
+
+text_indentation("""Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? \
+Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: \
+Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere. \
+Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum \
+rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo \
+stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum \
+cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio \
+beatiorem! Iam ruinas videres""")
+
+guillaume@ubuntu:~/0x07$ ./5-main.py | cat -e
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.$
+$
+Quonam modo?$
+$
+Utrum igitur tibi litteram videor an totas paginas commovere?$
+$
+Non autem hoc:$
+$
+igitur ne illud quidem.$
+$
+Fortasse id optimum, sed ubi illud:$
+$
+Plus semper voluptatis?$
+$
+Teneo, inquit, finem illi videri nihil dolere.$
+$
+Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.$
+$
+Si id dicis, vicimus.$
+$
+Inde sermone vario sex illa a Dipylo stadia confecimus.$
+$
+Sin aliud quid voles, postea.$
+$
+Quae animi affectio suum cuique tribuens atque hanc, quam dico.$
+$
+Utinam quidem dicerent alium alio beatiorem! Iam ruinas videresguillaume@ubuntu:~/0x07$
+guillaume@ubuntu:~/0x07$ python3 -m doctest -v ./tests/5-text_indentation.txt
 guillaume@ubuntu:~/0x07$
 ```
