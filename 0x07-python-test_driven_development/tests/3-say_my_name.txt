@@ -1,0 +1,35 @@
+# Tests function: say_my_name from module 3-say_my_name
+
+# Import function say_my_name
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Test both names are strings
+>>> say_my_name("John", "Smith")
+My name is John Smith
+
+>>> say_my_name("Walter", "White")
+My name is Walter White
+
+# Test only one name of type str passed
+>>> say_my_name("Binale")
+My name is Binale 
+
+# Test only one arg of type bool passed
+>>> say_my_name(True)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+# Test int passed as first_name
+>>> say_my_name(12, "White")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+# Test int passed as last_name
+>>> say_my_name("John", 12)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+# Test only None passed
+>>> say_my_name(None)
+Traceback (most recent call last):
+TypeError: first_name must be a string
