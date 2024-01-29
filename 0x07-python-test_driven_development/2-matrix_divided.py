@@ -7,6 +7,8 @@ def matrix_divided(matrix, div):
     msg2 = "Each row of the matrix must have the same size"
 
     # Check if matrix is a list of lists of ints and/or floats
+    if not matrix:
+        raise TypeError(msg1)
     for row in matrix:
         if type(row) is not list:
             raise TypeError(msg1)
