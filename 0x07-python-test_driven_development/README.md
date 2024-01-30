@@ -56,7 +56,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * We strongly encourage you to work together on test cases, so that you don’t miss any edge case – The Checker is checking for tests!
 
 # Tasks
-### 0. Integers additon: [0-add_integer.py](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/0-add_integer.py), [tests/0-add_integer.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/tests/0-add_integer.txt)
+### 0. Integers additon: ([0-add_integer.py](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/0-add_integer.py), [tests/0-add_integer.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/tests/0-add_integer.txt))
 Write a function that adds 2 integers.
 
 * Prototype: def add_integer(a, b=98):
@@ -273,7 +273,7 @@ guillaume@ubuntu:~/0x07$ python3 -m doctest -v ./tests/5-text_indentation.txt
 guillaume@ubuntu:~/0x07$
 ```
 
-### 5. Max integer - Unittest: ([tests/6-max_integer_test.py]())
+### 5. Max integer - Unittest: ([tests/6-max_integer_test.py](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x07-python-test_driven_development/tests/6-max_integer_test.py))
 
 Since the beginning you have been creating “Interactive tests”. For this exercise, you will add Unittests.
 
