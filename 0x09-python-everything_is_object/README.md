@@ -79,8 +79,14 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * All your files should end with a new line
 
 # Tasks
-### 0. Who am I? - ([0-answer.txt]())
+### 0. Who am I? - ([0-answer.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x09-python-everything_is_object/0-answer.txt))
 
 What function would you use to get the type of an object?
+
+Write the name of the function in the file, without ().
+
+### 1. Where are you? - ([1-answer.txt]())
+mandatory
+How do you get the variable identifier (which is the memory address in the CPython implementation)?
 
 Write the name of the function in the file, without ().
