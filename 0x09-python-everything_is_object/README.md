@@ -91,29 +91,68 @@ How do you get the variable identifier (which is the memory address in the CPyth
 
 Write the name of the function in the file, without ().
 
-### Right count - ([2-answer.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x09-python-everything_is_object/2-answer.txt))
+### 2. Right count - ([2-answer.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x09-python-everything_is_object/2-answer.txt))
 In the following code, do a and b point to the same object? Answer with Yes or No.
 ```
 >>> a = 89
 >>> b = 100
 ```
 
-### Right count = - ([3-answer.txt]())
+### 3. Right count = - ([3-answer.txt]())
 In the following code, do a and b point to the same object? Answer with Yes or No.
 ```
 >>> a = 89
 >>> b = 89
 ```
 
-### Right count = - ([4-answer.txt]())
+### 4. Right count = - ([4-answer.txt]())
 In the following code, do a and b point to the same object? Answer with Yes or No.
 ```
 >>> a = 89
 >>> b = a
 ```
-### Right count = - ([5-answer.txt]())
+### 5. Right count = - ([5-answer.txt]())
 In the following code, do a and b point to the same object? Answer with Yes or No.
 ```
 >>> a = 89
 >>> b = a + 1
+```
+
+### 6. Is equal - ([6-answer.txt]())
+What do these 3 lines print?
+```
+>>> s1 "Best School"
+>>> s2 = s1
+>>> print(s1 == s2)
+```
+
+### 7. Is the samee- ([7-answer.txt]())
+What do these 3 lines print?
+```
+>>> s1 = "Best"
+>>> s2 = s1
+>>> print(s1 is s2)
+```
+
+### 8. Is really equal - ([8-answer.txt]())
+What do these 3 lines print?
+```
+>>> s1 = "Best School"
+>>> s2 = "Best School"
+>>> print(s1 == s2)
+```
+
+### 9. Is really the same
+What do these 3 lines print?
+```
+>>> s1 = "Best School"
+>>> s2 = "Best School"
+>>> print(s1 is s2)
+```
+
+### 10. And with a list, is it equal
+```
+>>> ll = [1, 2, 3]
+>>> l2 = [1, 2, 3]
+print(ll == l2)
 ```
