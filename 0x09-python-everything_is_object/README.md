@@ -265,5 +265,71 @@ guillaume@ubuntu:~/0x09$
 ```
 
 ### 20. Tuple of not?
-```a = ()```
+```
+a = ()
+```
 Is a tuple? Answer with Yes or No.
+
+### 21. Tuple or not?
+```
+a = (1, 2)
+```
+Is a tuple? Answer with Yes or No.
+
+### 22. Tuple or not?
+```
+a = (1)
+```
+Is a tuple? Answer with Yes or No.
+
+### 23. Tuple or not?
+```
+a = (1, )
+```
+Is a tuple? Answer with Yes or No.
+
+### 24. Who I am?
+Wht does this script print?
+```
+a = (1)
+b = (1)
+a is b
+```
+
+### 25. Tuple or not?
+What does this script print 
+```
+a = (1, 2)
+b = (1, 2)
+a is b
+```
+
+### 26. Empty is not empty
+What does this script print?
+```
+a = ()
+b = ()
+a is b
+```
+
+### 27. Still the same?
+```
+>>> id(a)
+139926795932424
+>>> a
+[1, 2, 3, 4]
+>>> a = a + [5]
+>>> id(a)
+```
+Will the last line of this script print ```139926795932424```? Answer with Yes or No.
+
+### 28. Same or not?
+```
+>>> a
+[1, 2, 3]
+>>> id (a)
+139926795932424
+>>> a += [4]
+>>> id(a)
+```
+Will the last line of this script print 139926795932424? Answer with Yes or No.
