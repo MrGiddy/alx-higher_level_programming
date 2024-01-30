@@ -91,4 +91,29 @@ How do you get the variable identifier (which is the memory address in the CPyth
 
 Write the name of the function in the file, without ().
 
-### Right count - ([2-answer.txt]())
+### Right count - ([2-answer.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x09-python-everything_is_object/2-answer.txt))
+In the following code, do a and b point to the same object? Answer with Yes or No.
+```
+>>> a = 89
+>>> b = 100
+```
+
+### Right count = - ([3-answer.txt]())
+In the following code, do a and b point to the same object? Answer with Yes or No.
+```
+>>> a = 89
+>>> b = 89
+```
+
+### Right count = - ([4-answer.txt]())
+In the following code, do a and b point to the same object? Answer with Yes or No.
+```
+>>> a = 89
+>>> b = a
+```
+### Right count = - ([5-answer.txt]())
+In the following code, do a and b point to the same object? Answer with Yes or No.
+```
+>>> a = 89
+>>> b = a + 1
+```
