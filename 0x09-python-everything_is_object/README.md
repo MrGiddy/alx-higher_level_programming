@@ -79,7 +79,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * All your files should end with a new line
 
 # Tasks
-### 0. Who am I?: ([0-answer.txt]())
+### 0. Who am I? - ([0-answer.txt]())
 
 What function would you use to get the type of an object?
 
