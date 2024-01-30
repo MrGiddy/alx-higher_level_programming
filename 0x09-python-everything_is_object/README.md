@@ -150,9 +150,49 @@ What do these 3 lines print?
 >>> print(s1 is s2)
 ```
 
-### 10. And with a list, is it equal
+### 10. And with a list, is it equal?
+What do these 3 lines print?
 ```
 >>> ll = [1, 2, 3]
 >>> l2 = [1, 2, 3]
 print(ll == l2)
+```
+### 11. And with a list, is it the same?
+What do these 3 lines print?
+```
+>>> ll = [1, 2, 3]
+>>> l2 = [1, 2, 3]
+print(ll is l2)
+```
+### 12. And with a list, is it really equall?
+What do these 3 lines print?
+```
+>>> ll = [1, 2, 3]
+>>> l2 = ll 
+print(ll == l2)
+```
+### 13. And with a list, is it really the same?
+What do these 3 lines print?
+```
+>>> ll = [1, 2, 3]
+>>> l2 = ll 
+print(ll is l2)
+```
+
+### 14. List append
+What does this script print?
+```
+ll = [1, 2, 3]
+l2 = ll
+ll.append(4)
+print(l2)
+```
+
+### 15. List add
+```
+What does this script print?
+ll = [1, 2, 3]
+l2 = ll
+ll = ll + [4]
+print(l2)
 ```
