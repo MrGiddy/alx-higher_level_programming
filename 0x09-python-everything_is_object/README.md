@@ -85,8 +85,10 @@ What function would you use to get the type of an object?
 
 Write the name of the function in the file, without ().
 
-### 1. Where are you? - ([1-answer.txt]())
+### 1. Where are you? - ([1-answer.txt](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x09-python-everything_is_object/1-answer.txt))
 mandatory
 How do you get the variable identifier (which is the memory address in the CPython implementation)?
 
 Write the name of the function in the file, without ().
+
+### Right count - ([2-answer.txt]())
