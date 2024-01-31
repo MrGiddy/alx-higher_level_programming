@@ -332,9 +332,9 @@ Will the last line of this script print ```139926795932424```? Answer with Yes o
 >>> a += [4]
 >>> id(a)
 ```
-Will the last line of this script print 139926795932424? Answer with Yes or No.
+Will the last line of this script print ```139926795932424```? Answer with Yes or No.
 
-### 29. #pythonic - ([100-magic_string.py]())
+### 29. #pythonic - ([100-magic_string.py](https://github.com/MrGiddy/alx-higher_level_programming/blob/main/0x09-python-everything_is_object/100-magic_string.py))
 Write a function magic_string() that returns a string “BestSchool” n times the number of the iteration (see code):
 
 * Format: see example
@@ -384,3 +384,15 @@ guillaume@ubuntu:~/0x09$ ./101-main.py
 [AttributeError] 'LockedClass' object has no attribute 'last_name'
 guillaume@ubuntu:~/0x09$ 
 ```
+
+### 31. int 1/3 - ([103-line1.txt](), [103-line2.txt]())
+```
+julien@ubuntu:/python3$ cat int.py 
+a = 1
+b = 1
+julien@ubuntu:/python3$ 
+```
+Assuming we are using a CPython implementation of Python3 with default options/configuration:
+
+* How many int objects are created by the execution of the first line of the script? (103-line1.txt)
+* How many int objects are created by the execution of the second line of the script (103-line2.txt)
