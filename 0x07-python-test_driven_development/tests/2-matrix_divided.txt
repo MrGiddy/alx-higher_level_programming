@@ -58,6 +58,29 @@ TypeError: div must be a number
 >>> print(matrix)
 [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
-# Tests to add:
-	# All elements are floats
-	# div is a float
+
+>>> # Test when div is 'inf'
+>>> matrix_divided(matrix, 'inf')
+Traceback (most recent call last):
+TypeError: div must be a number
+
+>>> # Test when div is float('inf') or -float('inf')
+>>> matrix_divided(matrix, float('inf'))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+>>> matrix_divided(matrix, -float('inf'))
+[[-0.0, -0.0, -0.0], [-0.0, -0.0, -0.0], [-0.0, -0.0, -0.0]]
+
+>>> # Test when one argument is missing
+>>> matrix_divided(matrix)
+Traceback (most recent call last):
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+>>> matrix_divided(2)
+Traceback (most recent call last):
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+>>> # Test when both arguments are missing
+>>> matrix_divided()
+Traceback (most recent call last):
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
