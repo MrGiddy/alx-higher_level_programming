@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ Has a function that prints a square with the character # """
 
 
