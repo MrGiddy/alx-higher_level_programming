@@ -1,0 +1,193 @@
+# Tests for function ```matrix_mul``` from module ```100-matrix_mul```
+
+# Import function matrix_mul
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+**************************************************
+************* Tests for matrix: m_a **************
+**************************************************
+
+# Test when m_a is not a list
+>>> m_a = 2
+>>> m_b = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_a must be a list
+
+# Test when m_a is not a list of lists
+>>> m_a = [2]
+>>> m_b = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_a must be a list of lists
+
+# Test when m_a is an empty list
+>>> m_a = []
+>>> m_b = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ValueError: m_a can't be empty
+
+>>> m_a = [[]]
+>>> m_b = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ValueError: m_a can't be empty
+
+# Test when an element in a row is not int or float
+>>> m_a = [[1, 2, "three"], [4, 5, 6], [7, 8, 9]]
+>>> m_b = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_a should contain only integers or floats
+
+# Test when not all rows of m_a are of the same size
+>>> m_a = [[1, 2], [4, 5, 6], [7, 8, 9]]
+>>> m_b = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: each row of m_a must be of the same size
+
+Test when one arg of m_a is float('inf')
+>>> m_a = [[1, 2, 3], [4, 5, 6], [7, 8, float('inf')]]
+>>> m_b = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> matrix_mul(m_a, m_b)
+[[84, 90, 96], [201, 216, 231], [inf, inf, inf]]
+
+# Test when m_a is None
+>>> m_a = None
+>>> m_b = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_a must be a list
+
+# Test when m_a is 'nan'
+>>> m_a = 'nan'
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_a must be a list
+
+# Test when a value in a row of m_a is 'nan'
+>>> m_a = [[1, 2, 3], [4, 5, 6], [7, 8, 'nan']]
+>>> m_b = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_a should contain only integers or floats
+
+# Test when a value of a row in m_a is float('nan')
+>>> m_a = [[1, 2, 3], [4, 5, 6], [7, 8, float('nan')]]
+>>> matrix_mul(m_a, m_b)
+[[84, 90, 96], [201, 216, 231], [nan, nan, nan]]
+
+# Test when only m_b is passed
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+>>> m_b = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> matrix_mul(m_b)
+Traceback (most recent call last):
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+
+
+**************************************************
+************* Tests for matrix: m_b **************
+**************************************************
+
+# Test when m_b is not a list
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> m_b = 2
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_b must be a list
+
+# Test when m_b is not a list of lists
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> m_b = [2]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_b must be a list of lists
+
+# Test when m_b is an empty list
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> m_b = []
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ValueError: m_b can't be empty
+
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> m_b = [[]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ValueError: m_b can't be empty
+
+# Test when an element in a row is not int or float
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> m_b = [[1, 2, "three"], [4, 5, 6], [7, 8, 9]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_b should contain only integers or floats
+
+# Test when not all rows of m_b are of the same size
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> m_b = [[1, 2], [4, 5, 6], [7, 8, 9]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: each row of m_b must be of the same size
+
+Test when one arg of m_b is float('inf')
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> m_b = [[1, 2, 3], [4, 5, 6], [7, 8, float('inf')]]
+>>> matrix_mul(m_a, m_b)
+[[138, 171, inf], [174, 216, inf], [210, 261, inf]]
+
+# Test when m_b is None
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> m_b = None
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_b must be a list
+
+# Test when m_b is 'nan'
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> m_b = 'nan'
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_b must be a list
+
+# Test when a value in a row of m_b is 'nan'
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> m_b = [[1, 2, 3], [4, 5, 6], [7, 8, 'nan']]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+TypeError: m_b should contain only integers or floats
+
+# Test when a value of a row in m_b is float('nan')
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> m_b = [[1, 2, 3], [4, 5, 6], [7, 8, float('nan')]]
+>>> matrix_mul(m_a, m_b)
+[[138, 171, nan], [174, 216, nan], [210, 261, nan]]
+
+# Test when only m_a is passed
+>>> m_a = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+>>> matrix_mul(m_a)
+Traceback (most recent call last):
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+
+
+**************** Test matrices m_a and m_b *****************
+
+>>> m_a = [[10, 11, 12], [13, 14, 15]]
+>>> m_b = [[10, 11, 12]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ValueError: m_a and m_b can't be multiplied
+
+>>> m_a = [[10, 11, 12]]
+>>> m_b = [[10, 11, 12], [13, 14, 15]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+ValueError: m_a and m_b can't be multiplied
+
+>>> matrix_mul()
+Traceback (most recent call last):
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
