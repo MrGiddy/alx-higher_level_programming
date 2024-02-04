@@ -1,0 +1,158 @@
+# Tests for:
+	# Module: ``101-lazy_matrix_mul``
+	# Function: ``lazy_matrix_mul``
+
+# Usage:
+
+# Import function; ``lazy_matrix_mul`` from ``101-lazy_matrix_mul`` module
+
+::
+
+	>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+
+# ``m_a`` and ``m_b`` must be lists of lists of ints/floats
+
+::
+
+	>>> m_a = [[1, 2], [3, 4]]
+	>>> m_b = [[1, 2], [3, 4]]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	[[ 7 10]
+	 [15 22]]
+
+	>>> m_a = [[4.3, 7.2], [3.3, 4.6]]
+	>>> m_b = [[4.3, 7.2], [3.3, 4.6]]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	[[42.25 64.08]
+	 [29.37 44.92]]
+
+
+# if ``m_a`` or ``m_b`` is not list of lists, behavior can be undefined
+
+::
+
+	>>> m_a = [1, 2]
+	>>> m_b = [[3, 4]]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	ValueError: shapes (2,) and (1,2) not aligned: 2 (dim 0) != 1 (dim 0)
+
+	>>> m_a = [[3, 4]]
+	>>> m_b = [1, 2]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	[11]
+
+	>>> m_a = [1, 2]
+	>>> m_b = [3, 4]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	11
+
+
+# ``m_a`` and ``m_b`` must not be empty, else ValueError is raised
+
+::
+
+	>>> m_a = [[]]
+	>>> m_b = [[1, 2], [3, 4]]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	ValueError: shapes (1,0) and (2,2) not aligned: 0 (dim 1) != 2 (dim 0)
+
+	>>> m_b = [[]]
+	>>> m_a = [[1, 2], [3, 4]]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	ValueError: shapes (2,2) and (1,0) not aligned: 2 (dim 1) != 1 (dim 0)
+
+
+# If either ``m_a`` or ``m_b`` is not a list, ValueError is raised
+
+::
+
+	>>> m_a = 2
+	>>> m_b = [[4.3, 7.2], [3.3, 4.6]]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	ValueError: Scalar operands are not allowed, use '*' instead
+
+	>>> m_a = [[1, 2], [3, 4]]
+	>>> m_b = "m_b"
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	ValueError: Scalar operands are not allowed, use '*' instead
+
+
+# If elements of ``m_a`` or ``m_b`` are not ints of floats, TypeError is raised
+
+::
+
+	>>> m_a = [[1, 2.2], [3, "four"]]
+	>>> m_b = [[1, 2.2], [3, 4]]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	TypeError: invalid data type for einsum
+
+	>>> m_a = [[1, 2.2], [3, 4]]
+	>>> m_b = [["one", 2.2], [3, 4]]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	TypeError: invalid data type for einsum
+
+# Each row of individual matrices must be the same size else ValueError is raised
+
+::
+
+	>>> m_a = [[1, 2.2], [3, 4]]
+	>>> m_b = [[2.2], [3, 4]]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+	>>> m_a = [[2.2], [3, 4]]
+	>>> m_b = [[1, 2.2], [3, 4]]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+
+# Both arguments must be passed to function ``lazy_matrix_mul`` else TypeError is raised
+
+::
+
+	>>> print(lazy_matrix_mul())
+	Traceback (most recent call last):
+	TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+	>>> m_a = [[1, 2.2], [3, 4]]
+	>>> print(lazy_matrix_mul(m_a))
+	Traceback (most recent call last):
+	TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+	>>> m_b = [[1, 2.2], [3, 4]]
+	>>> print(lazy_matrix_mul(m_b))
+	Traceback (most recent call last):
+	TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+
+# ``m_a`` or ``m_b`` cannot be None else TypeError is raised
+
+::
+
+	>>> m_a = None
+	>>> m_b = [[1, 2.2], [3, 4]]
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	TypeError: Object arrays are not currently supported
+
+	>>> m_a = [[1, 2.2], [3, 4]]
+	>>> m_b = None
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	TypeError: Object arrays are not currently supported
+
+	>>> m_a = None
+	>>> m_b = None
+	>>> print(lazy_matrix_mul(m_a, m_b))
+	Traceback (most recent call last):
+	TypeError: Object arrays are not currently supported
