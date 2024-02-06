@@ -257,3 +257,44 @@ guillaume@ubuntu:~/0x0B$ cat my_set.json ; echo ""
 
 guillaume@ubuntu:~/0x0B$
 ```
+
+### 6. Create object from a JSON file
+Write a function that creates an Object from a “JSON file”:
+
+* Prototype: ```def load_from_json_file(filename):```
+* You must use the ```with``` statement
+* You don’t need to manage exceptions if the JSON string doesn’t represent an object.
+* You don’t need to manage file permissions / exceptions.
+```
+guillaume@ubuntu:~/0x0B$ cat my_fake.json
+{"is_active": true, 12 }
+guillaume@ubuntu:~/0x0B$ cat 6-main.py
+#!/usr/bin/python3
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
+
+filename = "my_list.json"
+my_list = load_from_json_file(filename)
+print(my_list)
+print(type(my_list))
+
+filename = "my_dict.json"
+my_dict = load_from_json_file(filename)
+print(my_dict)
+print(type(my_dict))
+
+try:
+    filename = "my_set_doesnt_exist.json"
+    my_set = load_from_json_file(filename)
+    print(my_set)
+    print(type(my_set))
+except Exception as e:
+    print("[{}] {}".format(e.__class__.__name__, e))
+
+try:
+    filename = "my_fake.json"
+    my_fake = load_from_json_file(filename)
+    print(my_fake)
+    print(type(my_fake))
+except Exception as e:
+    print("[{}] {}".format(e.__class__.__name__, e))
+```
