@@ -3,13 +3,13 @@
 # Resources
 **Read or watch**:
 
-* 7.2. Reading and Writing Files
-* 8.7. Predefined Clean-up Actions
-* Dive Into Python 3: Chapter 11. Files (until “11.4 Binary Files” (included))
-* JSON encoder and decoder
-* Learn to Program 8 : Reading / Writing Files
-* Automate the Boring Stuff with Python (ch. 8 p 180-183 and ch. 14 p 326-333)
-* All about py-file I/O
+* [7.2. Reading and Writing Files](https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files)
+* [8.7. Predefined Clean-up Actions](https://docs.python.org/3/tutorial/errors.html#predefined-clean-up-actions)
+* [Dive Into Python 3: Chapter 11. Files]() (until “11.4 Binary Files” (included))
+* [JSON encoder and decoder](https://docs.python.org/3/library/json.html)
+* [Learn to Program 8 : Reading / Writing Files](https://www.youtube.com/watch?v=EukxMIsNeqU)
+* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) (ch. 8 p 180-183 and ch. 14 p 326-333)
+* [All about py-file I/](https://techvidvan.com/tutorials/python-file-read-write/)
 
 # Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
@@ -66,5 +66,29 @@ We offer a truly innovative approach to education:
 focus on building reliable applications and scalable systems, take on real-world challenges, collaborate with your peers. 
 
 A school every software engineer would have dreamt of!
+guillaume@ubuntu:~/0x0B$ 
+```
+
+### 1. Write to a file - ([1-write_file.py]())
+Write a function that writes a string to a text file (```UTF8```) and returns the number of characters written:
+
+* Prototype: ```def write_file(filename="", text=""):```
+* You must use the ```with``` statement
+* You don’t need to manage file permission exceptions.
+* Your function should create the file if doesn’t exist.
+* Your function should overwrite the content of the file if it already exists.
+* You are not allowed to import any module
+```
+guillaume@ubuntu:~/0x0B$ cat 1-main.py
+#!/usr/bin/python3
+write_file = __import__('1-write_file').write_file
+
+nb_characters = write_file("my_first_file.txt", "This School is so cool!\n")
+print(nb_characters)
+
+guillaume@ubuntu:~/0x0B$ ./1-main.py
+29
+guillaume@ubuntu:~/0x0B$ cat my_first_file.txt
+This School is so cool!
 guillaume@ubuntu:~/0x0B$ 
 ```
