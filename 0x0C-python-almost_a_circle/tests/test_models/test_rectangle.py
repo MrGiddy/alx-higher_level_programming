@@ -3,14 +3,14 @@
 Defines unittests for class Rectangle of module rectangle.py
 
     The unittest classes:
-        1. TestRectangle_initialization
+        1. TestRectangleInitialization
 """
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 
 
-class TestRectangle(unittest.TestCase):
+class TestRectangleInitialization(unittest.TestCase):
     """ Test cases for class Rectangle """
 
     def setUp(self):
@@ -101,3 +101,65 @@ class TestRectangle(unittest.TestCase):
     def test_greater_than_five_args(self):
         with self.assertRaises(TypeError):
             r2 = Rectangle(10, 2, 0, 0, None, "extra")
+
+
+class TestRectangleWidth(unittest.TestCase):
+    """ Tests cases for the width attribute of a Rectangle """
+    def test_width_int(self):
+        r1 = Rectangle(10, 2)
+        self.assertEqual(type(r1.width), int)
+
+    def test_width_bool(self):
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            r1 = Rectangle(True, 2)
+
+    def test_width_negative(self):
+        with self.assertRaisesRegex(ValueError, 'width must be > 0'):
+            r1 = Rectangle(-10, 2)
+
+    def test_width_string(self):
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            r1 = Rectangle(True, 2)
+
+    def test_width_float_inf(self):
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            r1 = Rectangle(float('inf'), 2)
+
+    def test_width_None(self):
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            r1 = Rectangle(None, 2)
+
+    def test_width_nan(self):
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            r1 = Rectangle(float('nan'), 2)
+
+
+class TestRectangleHeight(unittest.TestCase):
+    """ Tests cases for the height attribute of a Rectangle """
+    def test_height_int(self):
+        r1 = Rectangle(10, 2)
+        self.assertEqual(type(r1.height), int)
+
+    def test_height_bool(self):
+        with self.assertRaisesRegex(TypeError, 'height must be an integer'):
+            r1 = Rectangle(10, False)
+
+    def test_height_negative(self):
+        with self.assertRaisesRegex(ValueError, 'height must be > 0'):
+            r1 = Rectangle(10, -2)
+
+    def test_height_string(self):
+        with self.assertRaisesRegex(TypeError, 'height must be an integer'):
+            r1 = Rectangle(10, "rectangle")
+
+    def test_height_float_inf(self):
+        with self.assertRaisesRegex(TypeError, 'height must be an integer'):
+            r1 = Rectangle(2, float('inf'))
+
+    def test_height_None(self):
+        with self.assertRaisesRegex(TypeError, 'height must be an integer'):
+            r1 = Rectangle(2, None)
+
+    def test_height_nan(self):
+        with self.assertRaisesRegex(TypeError, 'height must be an integer'):
+            r1 = Rectangle(2, float('nan'))
