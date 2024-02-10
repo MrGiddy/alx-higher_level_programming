@@ -1,9 +1,16 @@
 #!/usr/bin/python3
+"""
+Defines unittests for class Base of module base.py
+
+    The unittest classes:
+        1. TestBase_init
+"""
 import unittest
 from models.base import Base
 
 
-class TestBase(unittest.TestCase):
+class TestBase_init(unittest.TestCase):
+    """ Test cases for initialization of class Base """
 
     def test_id_not_None(self):
         obj = Base(20)
