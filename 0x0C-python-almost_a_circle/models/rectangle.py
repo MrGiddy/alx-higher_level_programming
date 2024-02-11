@@ -85,13 +85,17 @@ class Rectangle(Base):
 
     def display(self):
         """ Prints Rectangle using '#' to stdout """
-        for i in range(self.height):
-            for j in range(self.width):
+        for y in range(self.y):
+            print(' ')
+        for h in range(self.height):
+            for x in range(self.x):
+                print(' ', end="")
+            for w in range(self.width):
                 print("#", end="")
             print()
 
     def __str__(self):
         """ Override str to return custom Rectangle info. """
-        cls_name = self.__class__.__name__
-        bld_str = f'[{cls_name}] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}'
-        return bld_str
+        c = self.__class__.__name__
+        s = f'[{c}] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}'
+        return s

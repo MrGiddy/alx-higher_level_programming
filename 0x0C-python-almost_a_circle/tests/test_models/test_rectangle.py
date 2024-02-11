@@ -307,17 +307,17 @@ class TestRectangleDisplayAndStr(unittest.TestCase):
 
     def test_display_width_height_x(self):
         r1 = Rectangle(4, 6, 1)
-        expected = "####\n####\n####\n####\n####\n####\n"
+        expected = " ####\n ####\n ####\n ####\n ####\n ####\n"
         self.assertEqual(expected, self.captured_stdout(r1, 'display'))
 
     def test_display_width_height_y(self):
         r1 = Rectangle(4, 6, 0, 1)
-        expected = "####\n####\n####\n####\n####\n####\n"
+        expected = " \n####\n####\n####\n####\n####\n####\n"
         self.assertEqual(expected, self.captured_stdout(r1, 'display'))
 
     def test_display_width_height_x_y(self):
         r1 = Rectangle(4, 6, 1, 1)
-        expected = "####\n####\n####\n####\n####\n####\n"
+        expected = " \n ####\n ####\n ####\n ####\n ####\n ####\n"
         self.assertEqual(expected, self.captured_stdout(r1, 'display'))
 
     def test_display_arg_passed(self):
