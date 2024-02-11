@@ -4,6 +4,10 @@ Defines unittests for class Rectangle of module rectangle.py
 
     The unittest classes:
         1. TestRectangleInitialization
+        2. TestRectangleWidth
+        3. TestRectangleHeight
+        4. TestRectangleXCoordinate
+        5. TestRectangleYCoordinate
 """
 import unittest
 from models.base import Base
@@ -163,3 +167,106 @@ class TestRectangleHeight(unittest.TestCase):
     def test_height_nan(self):
         with self.assertRaisesRegex(TypeError, 'height must be an integer'):
             r1 = Rectangle(2, float('nan'))
+
+
+class TestRectangleXCoordinate(unittest.TestCase):
+    """ Test the x-coordinate of new Rectangle """
+
+    def test_x_int(self):
+        r1 = Rectangle(10, 2, 7, 0, None)
+        self.assertEqual(r1.x, 7)
+
+    def test_x_bool(self):
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            r1 = Rectangle(10, 2, True, 0, None)
+
+    def test_x_negative(self):
+        with self.assertRaisesRegex(ValueError, 'x must be >= 0'):
+            r1 = Rectangle(10, 2, -7, 0, None)
+
+    def test_x_zero(self):
+        r1 = Rectangle(10, 2, 0, 0, None)
+        self.assertEqual(r1.x, 0)
+
+    def test_x_string(self):
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            r1 = Rectangle(10, 2, "zero", 0, None)
+
+    def test_x_None(self):
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            r1 = Rectangle(10, 2, None, 0, None)
+
+    def test_x_float_nan(self):
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            r1 = Rectangle(10, 2, float('nan'), 0, None)
+
+    def test_x_float_inf(self):
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            r1 = Rectangle(10, 2, float('inf'), 0, None)
+
+    def test_x_float(self):
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            r1 = Rectangle(10, 2, 3.3, 0, None)
+
+
+class TestRectangleYCoordinate(unittest.TestCase):
+    """ Test the y-coordinate of new Rectangle """
+
+    def test_y_int(self):
+        r1 = Rectangle(10, 2, 0, 7, None)
+        self.assertEqual(r1.y, 7)
+
+    def test_y_bool(self):
+        with self.assertRaisesRegex(TypeError, 'y must be an integer'):
+            r1 = Rectangle(10, 2, 0, True, None)
+
+    def test_y_negative(self):
+        with self.assertRaisesRegex(ValueError, 'y must be >= 0'):
+            r1 = Rectangle(10, 2, 0, -7, None)
+
+    def test_y_zero(self):
+        r1 = Rectangle(10, 2, 0, 0, None)
+        self.assertEqual(r1.y, 0)
+
+    def test_y_string(self):
+        with self.assertRaisesRegex(TypeError, 'y must be an integer'):
+            r1 = Rectangle(10, 2, 0, "zero", None)
+
+    def test_y_None(self):
+        with self.assertRaisesRegex(TypeError, 'y must be an integer'):
+            r1 = Rectangle(10, 2, 0, None, None)
+
+    def test_y_float_nan(self):
+        with self.assertRaisesRegex(TypeError, 'y must be an integer'):
+            r1 = Rectangle(10, 2, 0, float('nan'), None)
+
+    def test_y_float_inf(self):
+        with self.assertRaisesRegex(TypeError, 'y must be an integer'):
+            r1 = Rectangle(10, 2, 0, float('inf'), None)
+
+    def test_y_float(self):
+        with self.assertRaisesRegex(TypeError, 'y must be an integer'):
+            r1 = Rectangle(10, 2, 0, 3.3, None)
+
+
+class RectangleArea(unittest.TestCase):
+    """ Test cases for the area of a Rectangle """
+
+    def test_small_area(self):
+        r1 = Rectangle(5, 10)
+        self.assertEqual(r1.area(), 50)
+
+    def test_large_area(self):
+        r1 = Rectangle(10**18, 10**18, 0, 0, 1)
+        self.assertEqual(r1.area(), 10**36)
+
+    def test_modified_attribs_area(self):
+        r1 = Rectangle(5, 10)
+        r1.width = 10
+        r1.height = 15
+        self.assertEqual(r1.area(), 150)
+
+    def test_arg_passed_to_area(self):
+        r1 = Rectangle(5, 10, 2, 2, 2)
+        with self.assertRaises(TypeError):
+            r1.area(2)
