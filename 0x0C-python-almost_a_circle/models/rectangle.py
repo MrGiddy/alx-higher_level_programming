@@ -99,3 +99,19 @@ class Rectangle(Base):
         c = self.__class__.__name__
         s = f'[{c}] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}'
         return s
+
+    def update(self, *args):
+        """ Assigns an argument to Rectangle attributes """
+
+        args_lst = ["id", "width", "height", "x", "y"]
+
+        for arg_name, arg_value in zip(args_lst, args):
+            if arg_name == 'id':
+                if arg_value is None:
+                    # Trigger super class to increment id
+                    self.__init__(self.width, self.height,
+                                  self.x, self.y,)
+                else:
+                    setattr(self, arg_name, arg_value)
+            else:
+                setattr(self, arg_name, arg_value)

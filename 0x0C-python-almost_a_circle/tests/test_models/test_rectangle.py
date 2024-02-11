@@ -362,3 +362,60 @@ class TestRectangleDisplayAndStr(unittest.TestCase):
         with self.assertRaises(TypeError):
             r1 = Rectangle(4, 5, 0, 0, 12)
             r1.__str__(1)
+
+
+class TestRectangleUpdate(unittest.TestCase):
+    """ Test cases for update method of Rectangle """
+
+    def test_update_no_args(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update()
+        self.assertEqual(str(r1), '[Rectangle] (10) 10/10 - 10/10')
+
+    def test_update_id_only(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(89)
+        self.assertEqual(str(r1), '[Rectangle] (89) 10/10 - 10/10')
+
+    def test_update_id_width(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(89, 2)
+        self.assertEqual(str(r1), '[Rectangle] (89) 10/10 - 2/10')
+
+    def test_update_id_width_height(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(89, 2, 3)
+        self.assertEqual(str(r1), '[Rectangle] (89) 10/10 - 2/3')
+
+    def test_update_id_width_height_x(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(89, 2, 3, 4)
+        self.assertEqual(str(r1), '[Rectangle] (89) 4/10 - 2/3')
+
+    def test_update_id_width_height_x_y(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(89, 2, 3, 4, 5)
+        self.assertEqual(str(r1), '[Rectangle] (89) 4/5 - 2/3')
+
+    def test_update_exceeding_args(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(89, 2, 3, 4, 5, 6)
+        self.assertEqual(str(r1), '[Rectangle] (89) 4/5 - 2/3')
+
+    def test_update_id_None(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(None)
+        expected = '[Rectangle] ({}) 10/10 - 10/10'.format(r1.id)
+        self.assertEqual(str(r1), expected)
+
+    def test_update_id_None_plus(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(None, 2, 3, 4, 5, 6)
+        expected = '[Rectangle] ({}) 4/5 - 2/3'.format(r1.id)
+        self.assertEqual(str(r1), expected)
+
+    def test_update_subsequent(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(89, 2, 3, 4, 5, 6)
+        r1.update(6, 5, 4, 3, 2, 89)
+        self.assertEqual(str(r1), '[Rectangle] (6) 3/2 - 5/4')
