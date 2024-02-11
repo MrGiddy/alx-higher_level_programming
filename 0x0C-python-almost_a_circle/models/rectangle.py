@@ -80,4 +80,18 @@ class Rectangle(Base):
         self.__y = y
 
     def area(self):
+        """ Print the area of a Rectangle """
         return self.__width * self.__height
+
+    def display(self):
+        """ Prints Rectangle using '#' to stdout """
+        for i in range(self.height):
+            for j in range(self.width):
+                print("#", end="")
+            print()
+
+    def __str__(self):
+        """ Override str to return custom Rectangle info. """
+        cls_name = self.__class__.__name__
+        bld_str = f'[{cls_name}] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}'
+        return bld_str

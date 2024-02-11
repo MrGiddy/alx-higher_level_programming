@@ -8,10 +8,13 @@ Defines unittests for class Rectangle of module rectangle.py
         3. TestRectangleHeight
         4. TestRectangleXCoordinate
         5. TestRectangleYCoordinate
+        6. TestRectangleDisplayAndStr
 """
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+import io
+import contextlib
 
 
 class TestRectangleInitialization(unittest.TestCase):
@@ -249,7 +252,7 @@ class TestRectangleYCoordinate(unittest.TestCase):
             r1 = Rectangle(10, 2, 0, 3.3, None)
 
 
-class RectangleArea(unittest.TestCase):
+class TestRectangleArea(unittest.TestCase):
     """ Test cases for the area of a Rectangle """
 
     def test_small_area(self):
@@ -270,3 +273,92 @@ class RectangleArea(unittest.TestCase):
         r1 = Rectangle(5, 10, 2, 2, 2)
         with self.assertRaises(TypeError):
             r1.area(2)
+
+
+class TestRectangleDisplayAndStr(unittest.TestCase):
+    """ Test cases for the display method of class Rectangle """
+
+    @staticmethod
+    def captured_stdout(rectangle, method):
+        captured_stdout = io.StringIO()
+        with contextlib.redirect_stdout(captured_stdout):
+            if method == 'display':
+                rectangle.display()
+            elif method == '__str__':
+                print(rectangle)
+
+        return captured_stdout.getvalue()
+
+    # Test cases for display method
+    def test_display_rectangle_4x3(self):
+        r1 = Rectangle(4, 3)
+        expected = "####\n####\n####\n"
+        self.assertEqual(expected, self.captured_stdout(r1, 'display'))
+
+    def test_display_rectangle_4x4(self):
+        r1 = Rectangle(4, 4)
+        expected = "####\n####\n####\n####\n"
+        self.assertEqual(expected, self.captured_stdout(r1, 'display'))
+
+    def test_display_rectangle_4x6(self):
+        r1 = Rectangle(4, 6)
+        expected = "####\n####\n####\n####\n####\n####\n"
+        self.assertEqual(expected, self.captured_stdout(r1, 'display'))
+
+    def test_display_width_height_x(self):
+        r1 = Rectangle(4, 6, 1)
+        expected = "####\n####\n####\n####\n####\n####\n"
+        self.assertEqual(expected, self.captured_stdout(r1, 'display'))
+
+    def test_display_width_height_y(self):
+        r1 = Rectangle(4, 6, 0, 1)
+        expected = "####\n####\n####\n####\n####\n####\n"
+        self.assertEqual(expected, self.captured_stdout(r1, 'display'))
+
+    def test_display_width_height_x_y(self):
+        r1 = Rectangle(4, 6, 1, 1)
+        expected = "####\n####\n####\n####\n####\n####\n"
+        self.assertEqual(expected, self.captured_stdout(r1, 'display'))
+
+    def test_display_arg_passed(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(4, 6, 1, 1)
+            r1.display(1)
+
+    # Test cases for __str__ method
+    def test_str_width_height(self):
+        r1 = Rectangle(4, 5)
+        cl = Rectangle.__name__
+        expected = f'[{cl}] ({r1.id}) {r1.x}/{r1.y} - {r1.width}/{r1.height}\n'
+        self.assertEqual(expected, self.captured_stdout(r1, '__str__'))
+
+    def test_str_width_height_x_y(self):
+        r1 = Rectangle(4, 5, 1, 1)
+        cl = Rectangle.__name__
+        expected = f'[{cl}] ({r1.id}) {r1.x}/{r1.y} - {r1.width}/{r1.height}\n'
+        self.assertEqual(expected, self.captured_stdout(r1, '__str__'))
+
+    def test_str_width_height_x_y_id(self):
+        r1 = Rectangle(4, 5, 1, 1, 12)
+        cl = Rectangle.__name__
+        expected = f'[{cl}] ({r1.id}) {r1.x}/{r1.y} - {r1.width}/{r1.height}\n'
+        self.assertEqual(expected, self.captured_stdout(r1, '__str__'))
+
+    def test_str_width_height_x(self):
+        r1 = Rectangle(4, 5, 1)
+        cl = Rectangle.__name__
+        expected = f'[{cl}] ({r1.id}) {r1.x}/{r1.y} - {r1.width}/{r1.height}\n'
+        self.assertEqual(expected, self.captured_stdout(r1, '__str__'))
+
+    def test_str_changed_attribs(self):
+        r1 = Rectangle(4, 5, 1)
+        r1.width = 10
+        r1.height = 2
+        cl = Rectangle.__name__
+        expected = f'[{cl}] ({r1.id}) {r1.x}/{r1.y} - {r1.width}/{r1.height}\n'
+        self.assertEqual(expected, self.captured_stdout(r1, '__str__'))
+
+    def test_str_arg_passed(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(4, 5, 0, 0, 12)
+            r1.__str__(1)
