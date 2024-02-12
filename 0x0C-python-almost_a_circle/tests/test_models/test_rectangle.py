@@ -277,7 +277,7 @@ class TestRectangleArea(unittest.TestCase):
 
 
 class TestRectangleDisplayAndStr(unittest.TestCase):
-    """ Test cases for the display method of class Rectangle """
+    """ Test cases for the display and __str__ methods of class Rectangle """
 
     @staticmethod
     def captured_stdout(rectangle, method):
