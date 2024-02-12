@@ -33,3 +33,39 @@ class Square(Rectangle):
         c = self.__class__.__name__
         s = f'[{c}] ({self.id}) {self.x}/{self.y} - {self.width}'
         return s
+
+    def update(self, *args, **kwargs):
+        """
+        Assigns arguments to Square attributes
+
+        Args:
+            *args (tuple): New values for attributes
+                - args[0] - id attribute
+                - args[1] - size attribute
+                - args[2] = x attribute
+                - args[3] = y attribute
+            **kwargs (dict): New Key/Value pairs for attributes
+        """
+
+        args_lst = ["id", "size", "x", "y"]
+
+        if args and len(args) != 0:
+            for arg_name, arg_value in zip(args_lst, args):
+                if arg_name == 'id':
+                    if arg_value is None:
+                        # Trigger super class to increment id
+                        self.__init__(self.size, self.x, self.y,)
+                    else:
+                        setattr(self, arg_name, arg_value)
+                else:
+                    setattr(self, arg_name, arg_value)
+        elif kwargs and len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == "id":
+                    if value is None:
+                        # Trigger super class to increment id
+                        self.__init__(self.size, self.x, self.y,)
+                    else:
+                        setattr(self, key, value)
+                else:
+                    setattr(self, key, value)

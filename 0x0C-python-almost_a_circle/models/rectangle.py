@@ -86,13 +86,13 @@ class Rectangle(Base):
     def display(self):
         """ Prints Rectangle using '#' to stdout """
         for y in range(self.y):
-            print(' ')
+            print('')
         for h in range(self.height):
             for x in range(self.x):
                 print(' ', end="")
             for w in range(self.width):
                 print("#", end="")
-            print()
+            print('')
 
     def __str__(self):
         """ Override str to return custom Rectangle info. """
