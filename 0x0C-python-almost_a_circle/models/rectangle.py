@@ -100,18 +100,41 @@ class Rectangle(Base):
         s = f'[{c}] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}'
         return s
 
-    def update(self, *args):
-        """ Assigns an argument to Rectangle attributes """
+    def update(self, *args, **kwargs):
+        """
+        Assigns an argument to Rectangle attributes
+
+        Args:
+            *args (tuple): New values for attributes
+                - args[0] - id attribute
+                - args[1] - width attribute
+                - args[2] - height attritube
+                - args[3] = x attribute
+                - args[4] = y attribute
+            **kwargs (dict): New Key/Value pairs for attributes
+        """
 
         args_lst = ["id", "width", "height", "x", "y"]
 
-        for arg_name, arg_value in zip(args_lst, args):
-            if arg_name == 'id':
-                if arg_value is None:
-                    # Trigger super class to increment id
-                    self.__init__(self.width, self.height,
-                                  self.x, self.y,)
+        if args and len(args) != 0:
+            for arg_name, arg_value in zip(args_lst, args):
+                if arg_name == 'id':
+                    if arg_value is None:
+                        # Trigger super class to increment id
+                        self.__init__(self.width, self.height,
+                                      self.x, self.y,)
+                    else:
+                        setattr(self, arg_name, arg_value)
                 else:
                     setattr(self, arg_name, arg_value)
-            else:
-                setattr(self, arg_name, arg_value)
+        elif kwargs and len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == "id":
+                    if value is None:
+                        # Trigger super class to increment id
+                        self.__init__(self.width, self.height,
+                                      self.x, self.y)
+                    else:
+                        setattr(self, key, value)
+                else:
+                    setattr(self, key, value)

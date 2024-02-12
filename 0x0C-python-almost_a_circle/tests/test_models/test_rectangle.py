@@ -367,6 +367,7 @@ class TestRectangleDisplayAndStr(unittest.TestCase):
 class TestRectangleUpdate(unittest.TestCase):
     """ Test cases for update method of Rectangle """
 
+    # *args
     def test_update_no_args(self):
         r1 = Rectangle(10, 10, 10, 10, 10)
         r1.update()
@@ -419,3 +420,95 @@ class TestRectangleUpdate(unittest.TestCase):
         r1.update(89, 2, 3, 4, 5, 6)
         r1.update(6, 5, 4, 3, 2, 89)
         self.assertEqual(str(r1), '[Rectangle] (6) 3/2 - 5/4')
+
+    # **kwargs
+    def test_update_kwargs_id(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(id=1)
+        self.assertEqual(str(r1), "[Rectangle] (1) 10/10 - 10/10")
+
+    def test_update_kwargs_id_width(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(id=1, width=2)
+        self.assertEqual(str(r1), "[Rectangle] (1) 10/10 - 2/10")
+
+    def test_update_kwargs_id_width_height(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(width=2, height=2, id=1)
+        self.assertEqual(str(r1), "[Rectangle] (1) 10/10 - 2/2")
+
+    def test_update_kwargs_id_width_height_x(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(x=0, width=2, height=2, id=1)
+        self.assertEqual(str(r1), "[Rectangle] (1) 0/10 - 2/2")
+
+    def test_update_kwargs_id_width_height_x_y(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(x=0, width=2, y=3, height=2, id=1)
+        self.assertEqual(str(r1), "[Rectangle] (1) 0/3 - 2/2")
+
+    def test_update_kwargs_id_None(self):
+        r1 = Rectangle(1, 1, 1, 1, 1)
+        r1.update(id=None)
+        self.assertEqual(str(r1), f"[Rectangle] ({r1.id}) 1/1 - 1/1")
+
+    def test_update_kwargs_id_None_Plus(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(id=None, y=3, width=8)
+        self.assertEqual(str(r1), f"[Rectangle] ({r1.id}) 10/3 - 8/10")
+
+    def test_update_kwargs_subsequent(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(id=None, y=3, width=8)
+        r1.update(id=2, y=1, width=3)
+        self.assertEqual(str(r1), f"[Rectangle] (2) 10/1 - 3/10")
+
+    def test_update_kwargs_str_width(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r1.update(id=2, y=1, width="width")
+
+    def test_update_kwargs_negative_width(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            r1.update(id=2, y=1, width=-3)
+
+    def test_update_kwargs_float_height(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            r1.update(id=2, y=1, height=3.0)
+
+    def test_update_kwargs_negative_height(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            r1.update(id=2, y=1, height=-10)
+
+    def test_update_kwargs_bool_x(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r1.update(id=2, x=True, height=3)
+
+    def test_update_kwargs_negative_x(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            r1.update(id=2, x=-1, height=10)
+
+    def test_update_kwargs_list_y(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r1.update(id=2, y=False, height=3)
+
+    def test_update_kwargs_negative_y(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            r1.update(id=2, y=-1, height=10)
+
+    def test_update_args_kwargs(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(89, 2, width=3, y=6)
+        self.assertEqual(str(r1), '[Rectangle] (89) 10/10 - 2/10')
+
+    def test_update_wrong_keys(self):
+        r1 = Rectangle(10, 10, 10, 10, 10)
+        r1.update(id=89, hait=2, wdh=3, y=6)
+        self.assertEqual(str(r1), '[Rectangle] (89) 10/6 - 10/10')
