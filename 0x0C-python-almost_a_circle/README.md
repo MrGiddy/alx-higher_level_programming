@@ -646,3 +646,36 @@ guillaume@ubuntu:~/$ ./13-main.py
 False
 guillaume@ubuntu:~/$ 
 ```
+
+### 15. Dictionary to JSON string
+JSON is one of the standard formats for sharing data representation.
+
+Update the class ```Base``` by adding the static method ```def to_json_string(list_dictionaries):``` that returns the JSON string representation of ```list_dictionaries```:
+
+* ```list_dictionaries``` is a list of dictionaries
+* If ```list_dictionaries``` is None or empty, return the string: ```"[]"```
+* Otherwise, return the JSON string representation of ```list_dictionaries```
+```
+guillaume@ubuntu:~/$ cat 14-main.py
+#!/usr/bin/python3
+""" 14-main """
+from models.base import Base
+from models.rectangle import Rectangle
+
+if __name__ == "__main__":
+
+    r1 = Rectangle(10, 7, 2, 8)
+    dictionary = r1.to_dictionary()
+    json_dictionary = Base.to_json_string([dictionary])
+    print(dictionary)
+    print(type(dictionary))
+    print(json_dictionary)
+    print(type(json_dictionary))
+
+guillaume@ubuntu:~/$ ./14-main.py
+{'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8}
+<class 'dict'>
+[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]
+<class 'str'>
+guillaume@ubuntu:~/$ 
+```

@@ -433,3 +433,7 @@ class TestSquareToDictionary(unittest.TestCase):
         with self.assertRaises(TypeError):
             r1 = Square(1, 2, 3, 4)
             r1.to_dictionary(0)
+
+
+if __name__ == "__main__":
+    unittest.main()
