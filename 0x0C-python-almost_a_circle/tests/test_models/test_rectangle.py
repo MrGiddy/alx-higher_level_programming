@@ -526,7 +526,7 @@ class TestRectangleToDictionary(unittest.TestCase):
         expected = {'id': None, 'x': 1, 'y': 9, 'width': 10, 'height': 2}
         self.assertEqual(type(r1.to_dictionary()), dict)
 
-    def test_to_dictionary_after_update(self):
+    def test_to_dictionary_for_update(self):
         r1 = Rectangle(10, 2, 1, 9, 5)
         kwargs = r1.to_dictionary()
         r2 = Rectangle(5, 9, 1, 2, 10)

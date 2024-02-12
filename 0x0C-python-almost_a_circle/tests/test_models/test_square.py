@@ -6,6 +6,8 @@ Defines unittests for class Square
         1. TestSquareInitialization
         2. TestSquareDisplayAndStr
         3. TestSquareUpdateArgsKwargs
+        4. TestSquareToDictionary
+        5. TestSquareArea:
 """
 
 import unittest
@@ -384,3 +386,50 @@ class TestSquareToDictionary(unittest.TestCase):
         with self.assertRaises(TypeError):
             s1 = Square(10, 2, 1, 9)
             s1.to_dictionary(0)
+
+
+class TestSquareArea(unittest.TestCase):
+    """ Test cases for the area of a Rectangle """
+
+    def test_small_area(self):
+        s1 = Square(5)
+        self.assertEqual(s1.area(), 25)
+
+    def test_large_area(self):
+        s1 = Square(10**18)
+        self.assertEqual(s1.area(), 10**36)
+
+    def test_modified_size_area(self):
+        s1 = Square(5)
+        s1.size = 10
+        self.assertEqual(s1.area(), 100)
+
+    def test_arg_passed_to_area(self):
+        r1 = Square(5)
+        with self.assertRaises(TypeError):
+            r1.area(2)
+
+
+class TestSquareToDictionary(unittest.TestCase):
+    """ Test cases for the to_dictionary method of a Square """
+
+    def test_to_dictionary_type(self):
+        s1 = Square(1, 1, 1, 1)
+        self.assertEqual(type(s1.to_dictionary()), dict)
+
+    def test_to_dictionary_output(self):
+        s1 = Square(1, 2, 3, 4)
+        expected = {"id": 4, "y": 3, "size": 1, "x": 2}
+        self.assertEqual(expected, s1.to_dictionary())
+
+    def test_to_dictionary_for_update(self):
+        s1 = Square(1, 2, 3, 4)
+        kwargs = s1.to_dictionary()
+        s2 = Square(4, 3, 2, 1)
+        s2.update(**kwargs)
+        self.assertNotEqual(s1, s2)
+
+    def test_to_dictionary_one_arg_passed(self):
+        with self.assertRaises(TypeError):
+            r1 = Square(1, 2, 3, 4)
+            r1.to_dictionary(0)
