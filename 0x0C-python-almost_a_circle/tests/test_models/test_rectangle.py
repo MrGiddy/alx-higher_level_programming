@@ -313,12 +313,12 @@ class TestRectangleDisplayAndStr(unittest.TestCase):
 
     def test_display_width_height_y(self):
         r1 = Rectangle(4, 6, 0, 1)
-        expected = " \n####\n####\n####\n####\n####\n####\n"
+        expected = "\n####\n####\n####\n####\n####\n####\n"
         self.assertEqual(expected, self.captured_stdout(r1, 'display'))
 
     def test_display_width_height_x_y(self):
         r1 = Rectangle(4, 6, 1, 1)
-        expected = " \n ####\n ####\n ####\n ####\n ####\n ####\n"
+        expected = "\n ####\n ####\n ####\n ####\n ####\n ####\n"
         self.assertEqual(expected, self.captured_stdout(r1, 'display'))
 
     def test_display_arg_passed(self):
@@ -513,3 +513,27 @@ class TestRectangleUpdate(unittest.TestCase):
         r1 = Rectangle(10, 10, 10, 10, 10)
         r1.update(id=89, hait=2, wdh=3, y=6)
         self.assertEqual(str(r1), '[Rectangle] (89) 10/6 - 10/10')
+
+
+class TestRectangleToDictionary(unittest.TestCase):
+    """ Test cases for the to_dictionary method of a Rectangle """
+    def test_to_dictionary_type(self):
+        r1 = Rectangle(10, 2, 1, 9, None)
+        self.assertEqual(type(r1.to_dictionary()), dict)
+
+    def test_to_dictionary_output(self):
+        r1 = Rectangle(10, 2, 1, 9, None)
+        expected = {'id': None, 'x': 1, 'y': 9, 'width': 10, 'height': 2}
+        self.assertEqual(type(r1.to_dictionary()), dict)
+
+    def test_to_dictionary_after_update(self):
+        r1 = Rectangle(10, 2, 1, 9, 5)
+        kwargs = r1.to_dictionary()
+        r2 = Rectangle(5, 9, 1, 2, 10)
+        r2.update(**kwargs)
+        self.assertNotEqual(r1, r2)
+
+    def test_to_dictionary_arg_passed(self):
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(10, 2, 1, 9, None)
+            r1.to_dictionary(0)

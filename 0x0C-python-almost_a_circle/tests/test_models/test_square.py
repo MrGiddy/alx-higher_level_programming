@@ -360,3 +360,27 @@ class TestSquareUpdateArgsKwargs(unittest.TestCase):
         s1 = Square(10, 10, 10, 10)
         s1.update(eye_d=98, witdh=89)
         self.assertEqual(str(s1), '[Square] (10) 10/10 - 10')
+
+
+class TestSquareToDictionary(unittest.TestCase):
+    """ Test cases for the to_dictionary method of a Rectangle """
+    def test_to_dictionary_type(self):
+        s1 = Square(10, 2, 1, 9)
+        self.assertEqual(type(s1.to_dictionary()), dict)
+
+    def test_to_dictionary_output(self):
+        s1 = Square(10, 2, 1, 9)
+        expected = {'id': 9, 'x': 2, 'y': 1, 'width': 10, 'height': 10}
+        self.assertEqual(type(s1.to_dictionary()), dict)
+
+    def test_to_dictionary_after_update(self):
+        s1 = Square(10, 2, 1, 9)
+        kwargs = s1.to_dictionary()
+        s2 = Square(5, 9, 1, 2)
+        s2.update(**kwargs)
+        self.assertNotEqual(s1, s2)
+
+    def test_to_dictionary_arg_passed(self):
+        with self.assertRaises(TypeError):
+            s1 = Square(10, 2, 1, 9)
+            s1.to_dictionary(0)

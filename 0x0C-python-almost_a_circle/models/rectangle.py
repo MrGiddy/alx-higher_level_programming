@@ -138,3 +138,8 @@ class Rectangle(Base):
                         setattr(self, key, value)
                 else:
                     setattr(self, key, value)
+
+    def to_dictionary(self):
+        """ Returns a dictionary representation of a Rectangle """
+        keys_lst = ["id", "width", "height", "x", "y"]
+        return {key: getattr(self, key) for key in keys_lst}
