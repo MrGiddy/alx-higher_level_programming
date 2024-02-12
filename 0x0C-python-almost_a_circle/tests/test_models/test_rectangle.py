@@ -9,6 +9,7 @@ Defines unittests for class Rectangle of module rectangle.py
         4. TestRectangleXCoordinate
         5. TestRectangleYCoordinate
         6. TestRectangleDisplayAndStr
+        7. TestRectangleUpdate
 """
 import unittest
 from models.base import Base
