@@ -278,7 +278,7 @@ guillaume@ubuntu:~/$ ./4-main.py
 guillaume@ubuntu:~/$ 
 ```
 
-# 6. __str__
+### 6. __str__
 
 Update the class ```Rectangle``` by overriding the ```__str__``` method so that it returns ```[Rectangle] (<id>) <x>/<y> - <width>/<height>```
 ```
@@ -301,7 +301,7 @@ guillaume@ubuntu:~/$ ./5-main.py
 guillaume@ubuntu:~/$ 
 ```
 
-7. Display #1
+### 7. Display #1
 Update the class ```Rectangle``` by improving the public method ```def display(self):``` to print in stdout the ```Rectangle``` instance with the character # by taking care of ```x``` and ```y```
 ```
 guillaume@ubuntu:~/$ cat 6-main.py
@@ -331,7 +331,7 @@ $
 guillaume@ubuntu:~/$ 
 ```
 
-# 8. Update #0
+### 8. Update #0
 
 Update the class Rectangle by adding the public method def update(self, *args): that assigns an argument to each attribute:
 
@@ -377,7 +377,7 @@ guillaume@ubuntu:~/$ ./7-main.py
 guillaume@ubuntu:~/$ 
 ```
 
-### 9. Update #1
+### 9. Update \#1
 
 Update the class ```Rectangle``` by updating the public method ```def update(self, *args):``` by changing the prototype to ```update(self, *args, **kwargs)``` that assigns a key/value argument to attributes:
     * ```**kwargs``` can be thought of as a double pointer to a dictionary: key/value
@@ -480,7 +480,7 @@ guillaume@ubuntu:~/$ ./9-main.py
 guillaume@ubuntu:~/$ 
 ```
 
-# 11. Square size
+### 11. Square size
 Update the class ```Square``` by adding the public getter and setter ```size```
 
 * The setter should assign (in this order) the ```width``` and the ```height``` - with the same value
@@ -607,7 +607,7 @@ False
 guillaume@ubuntu:~/$ 
 ```
 
-14. Square to instance dictionary representation
+### 14. Square to instance dictionary representation
 
 Update the class ```Square``` by adding the public method ```def to_dictionary(self):``` that returns the dictionary representation of a ```Square```:
 
@@ -740,7 +740,7 @@ guillaume@ubuntu:~/$ ./16-main.py
 guillaume@ubuntu:~/$ 
 ```
 
-### 17. Dictionary to Instance
+### 18. Dictionary to Instance
 
 Update the class ```Base``` by adding the class method ```def create(cls, **dictionary):``` that returns an instance with all attributes already set:
 
@@ -772,5 +772,73 @@ guillaume@ubuntu:~/$ ./17-main.py
 [Rectangle] (1) 1/0 - 3/5
 False
 False
+guillaume@ubuntu:~/$ 
+```
+
+### 19. File to instances
+
+Update the class ```Base``` by adding the class method ```def load_from_file(cls):``` that returns a list of instances:
+
+* The filename must be: ```<Class name>.json``` - example: ```Rectangle.json```
+* If the file doesn’t exist, return an empty list
+* Otherwise, return a list of instances - the type of these instances depends on ```cls``` (current class using this method)
+* You must use the ```from_json_string``` and ```create``` methods (implemented previously)
+```
+guillaume@ubuntu:~/$ cat 18-main.py
+#!/usr/bin/python3
+""" 18-main """
+from models.rectangle import Rectangle
+from models.square import Square
+
+if __name__ == "__main__":
+
+    r1 = Rectangle(10, 7, 2, 8)
+    r2 = Rectangle(2, 4)
+    list_rectangles_input = [r1, r2]
+
+    Rectangle.save_to_file(list_rectangles_input)
+
+    list_rectangles_output = Rectangle.load_from_file()
+
+    for rect in list_rectangles_input:
+        print("[{}] {}".format(id(rect), rect))
+
+    print("---")
+
+    for rect in list_rectangles_output:
+        print("[{}] {}".format(id(rect), rect))
+
+    print("---")
+    print("---")
+
+    s1 = Square(5)
+    s2 = Square(7, 9, 1)
+    list_squares_input = [s1, s2]
+
+    Square.save_to_file(list_squares_input)
+
+    list_squares_output = Square.load_from_file()
+
+    for square in list_squares_input:
+        print("[{}] {}".format(id(square), square))
+
+    print("---")
+
+    for square in list_squares_output:
+        print("[{}] {}".format(id(square), square))
+
+guillaume@ubuntu:~/$ ./18-main.py
+[139785912033120] [Rectangle] (1) 2/8 - 10/7
+[139785912033176] [Rectangle] (2) 0/0 - 2/4
+---
+[139785911764752] [Rectangle] (1) 2/8 - 10/7
+[139785911764808] [Rectangle] (2) 0/0 - 2/4
+---
+---
+[139785912058040] [Square] (5) 0/0 - 5
+[139785912061848] [Square] (6) 9/1 - 7
+---
+[139785911764976] [Square] (5) 0/0 - 5
+[139785911765032] [Square] (6) 9/1 - 7
 guillaume@ubuntu:~/$ 
 ```

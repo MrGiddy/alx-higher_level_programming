@@ -8,6 +8,7 @@ Defines unittests for class Base of module base.py
         3. TestBaseSaveToFile
         4. TestBaseFromJsonString
         5. TestBaseCreate
+        6. TestBaseLoadFromFile
 """
 import unittest
 from models.base import Base
@@ -298,6 +299,69 @@ class TestBaseCreate(unittest.TestCase):
         s1_dictionary = s1.to_dictionary()
         s2 = Square.create(**s1_dictionary)
         self.assertNotEqual(s1, s2)
+
+
+class TestBaseLoadFromFile(unittest.TestCase):
+    """ Test cases for method load_from_file of Base """
+    def test_load_from_file_list_type(self):
+        r1 = Rectangle(10, 7, 2, 8)
+        Rectangle.save_to_file([r1])
+        self.assertEqual(type(Rectangle.load_from_file()), list)
+        s1 = Square(5)
+        Square.save_to_file([s1])
+        self.assertEqual(type(Square.load_from_file()), list)
+
+    def test_load_from_file_empty_list(self):
+        Rectangle.save_to_file([])
+        self.assertEqual(Rectangle.load_from_file(), [])
+        Square.save_to_file([])
+        self.assertEqual(Square.load_from_file(), [])
+
+    def test_load_from_file_empty_file(self):
+        Rectangle.save_to_file("")
+        self.assertEqual(Rectangle.load_from_file(), [])
+        Square.save_to_file("")
+        self.assertEqual(Square.load_from_file(), [])
+
+    def test_load_from_file_dne_rectangle(self):
+        self.assertEqual(Rectangle.load_from_file(), [])
+
+    def test_load_from_file_dne_square(self):
+        self.assertEqual(Square.load_from_file(), [])
+
+    def test_load_from_file_square(self):
+        s1 = Square(5, 4, 3, 2)
+        Square.save_to_file([s1])
+        lst = Square.load_from_file()
+        self.assertEqual(str(lst[0]), str(s1))
+        self.assertTrue(type(lst[0]) == type(s1))
+
+    def test_load_from_file_squares(self):
+        s1 = Square(5, 4, 3, 2)
+        s2 = Square(1, 2, 3, 4)
+        Square.save_to_file([s1, s2])
+        lst = Square.load_from_file()
+        self.assertEqual(str(lst[0]), str(s1))
+        self.assertEqual(str(lst[1]), str(s2))
+
+    def test_load_from_file_rectangle(self):
+        r1 = Rectangle(10, 7, 2, 8)
+        Rectangle.save_to_file([r1])
+        lst = Rectangle.load_from_file()
+        self.assertEqual(str(lst[0]), str(r1))
+        self.assertTrue(type(lst[0]) == type(r1))
+
+    def test_load_from_file_rectangles(self):
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(8, 2, 7, 10)
+        Rectangle.save_to_file([r1, r2])
+        lst = Rectangle.load_from_file()
+        self.assertEqual(str(lst[0]), str(r1))
+        self.assertEqual(str(lst[1]), str(r2))
+
+    def test_load_from_file_two_args(self):
+        with self.assertRaises(TypeError):
+            Base.load_from_file([], 1)
 
 
 if __name__ == "__main__":
