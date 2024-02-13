@@ -57,3 +57,15 @@ class Base:
                 dict_lst = [obj.to_dictionary() for obj in list_objs]
                 json_string = cls.to_json_string(dict_lst)
                 f.write(json_string)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        Converts a JSON string to a Python list object
+
+        Args:
+            json_string (str): JSON string of a list of dictionaries
+        """
+        if json_string:
+            return json.loads(json_string)
+        return []

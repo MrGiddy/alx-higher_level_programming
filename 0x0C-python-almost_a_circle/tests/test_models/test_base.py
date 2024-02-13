@@ -5,6 +5,8 @@ Defines unittests for class Base of module base.py
     The unittest classes:
         1. TestBase_init
         2. TestBaseToJsonString
+        3. TestBaseSaveToFile
+        4. TestBaseFromJsonString
 """
 import unittest
 from models.base import Base
@@ -182,6 +184,63 @@ class TestBaseSaveToFile(unittest.TestCase):
     def test_save_to_file_no_args_rectangle(self):
         with self.assertRaises(TypeError):
             Rectangle.save_to_file()
+
+
+class TestBaseFromJsonString(unittest.TestCase):
+    """ Test cases for from_json_string() method of Base """
+    def test_from_json_string_empty_list(self):
+        self.assertEqual(Base.from_json_string("[]"), [])
+
+    def test_from_json_string_None(self):
+        self.assertEqual(Base.from_json_string(None), [])
+
+    def test_from_json_string_is_type_list(self):
+        dict_lst_in = [{"id": 89, "width": 10, "height": 4}]
+        json_string = Rectangle.to_json_string(dict_lst_in)
+        dict_lst_out = Rectangle.from_json_string(json_string)
+        self.assertEqual(list, type(dict_lst_out))
+
+    def test_from_json_string_to_rectangle(self):
+        dict_lst_in = [
+            {"id": 98, "width": 5, "height": 2, "x": 1, "y": 3},
+        ]
+        json_string = Rectangle.to_json_string(dict_lst_in)
+        dict_lst_out = Rectangle.from_json_string(json_string)
+        self.assertEqual(dict_lst_in, dict_lst_out)
+
+    def test_from_json_string_to_rectangles(self):
+        dicts_lst_in = [
+            {"id": 89, "width": 10, "height": 4, "x": 7, "y": 8},
+            {"id": 98, "width": 5, "height": 2, "x": 1, "y": 3},
+        ]
+        json_string = Rectangle.to_json_string(dicts_lst_in)
+        dicts_lst_out = Rectangle.from_json_string(json_string)
+        self.assertEqual(dicts_lst_in, dicts_lst_out)
+
+    def test_from_json_string_to_square(self):
+        dict_lst_in = [
+            {"id": 89, "size": 10, "height": 4},
+        ]
+        json_string = Square.to_json_string(dict_lst_in)
+        dict_lst_out = Square.from_json_string(json_string)
+        self.assertEqual(dict_lst_in, dict_lst_out)
+
+    def test_from_json_string_to_squares(self):
+        dicts_lst_in = [
+            {"id": 89, "size": 10, "height": 4},
+            {"id": 7, "size": 1, "height": 7},
+        ]
+        json_string = Square.to_json_string(dicts_lst_in)
+        dicts_lst_out = Square.from_json_string(json_string)
+        self.assertEqual(dicts_lst_in, dicts_lst_out)
+
+    def test_from_json_string_no_args(self):
+        with self.assertRaises(TypeError):
+            Base.from_json_string()
+
+    def test_from_json_string_exceeding_args(self):
+        with self.assertRaises(TypeError):
+            Base.from_json_string(1, [])
 
 
 if __name__ == "__main__":
