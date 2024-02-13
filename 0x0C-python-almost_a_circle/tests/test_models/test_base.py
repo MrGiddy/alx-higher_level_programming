@@ -116,5 +116,73 @@ class TestBaseToJsonString(unittest.TestCase):
             Base.to_json_string([], 1)
 
 
+class TestBaseSaveToFile(unittest.TestCase):
+    """ Test cases for the save_to_file() method of class Base """
+    def test_save_to_file_list_objs_rect_None(self):
+        expected = "[]"
+        Rectangle.save_to_file(list_objs=None)
+        with open('Rectangle.json', 'r', encoding='utf-8') as f:
+            self.assertEqual(expected, f.read())
+
+    def test_save_to_file_list_objs_rectangle(self):
+        r1 = Rectangle(10, 7, 2, 8, 5)
+        Rectangle.save_to_file([r1])
+        with open('Rectangle.json', 'r', encoding='utf-7') as f:
+            self.assertEqual(53, len(f.read()))
+
+    def test_save_to_file_list_objs_rectangles(self):
+        r1 = Rectangle(10, 7, 2, 8, 5)
+        r2 = Rectangle(2, 4, 1, 2, 3)
+        Rectangle.save_to_file([r1, r2])
+        with open('Rectangle.json', 'r', encoding='utf-7') as f:
+            self.assertEqual(105, len(f.read()))
+
+    def test_save_to_file_list_objs_None_square(self):
+        expected = "[]"
+        Square.save_to_file(list_objs=None)
+        with open('Square.json', 'r', encoding='utf-8') as f:
+            self.assertEqual(expected, f.read())
+
+    def test_save_to_file_list_objs_square(self):
+        s1 = Square(10, 7, 2, 8)
+        Square.save_to_file([s1])
+        with open('Square.json', 'r', encoding='utf-7') as f:
+            self.assertEqual(39, len(f.read()))
+
+    def test_save_to_file_list_objs_rectangles(self):
+        s1 = Square(10, 7, 2, 8)
+        s2 = Square(8, 1, 2, 3)
+        Rectangle.save_to_file([s1, s2])
+        with open('Rectangle.json', 'r', encoding='utf-7') as f:
+            self.assertEqual(77, len(f.read()))
+
+    def test_save_to_file_filename_is_Base(self):
+        s = Square(10, 7, 2, 8)
+        Base.save_to_file([s])
+        with open("Base.json", "r") as f:
+            self.assertTrue(len(f.read()) == 39)
+
+    def test_save_to_file_overwritten(self):
+        s = Square(9, 2, 39, 2)
+        Square.save_to_file([s])
+        s = Square(10, 7, 2, 8)
+        Square.save_to_file([s])
+        with open("Square.json", "r") as f:
+            self.assertTrue(len(f.read()) == 39)
+
+    def test_save_to_file_list_objs_empty(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual("[]", f.read())
+
+    def test_save_to_file_no_args_square(self):
+        with self.assertRaises(TypeError):
+            Square.save_to_file()
+
+    def test_save_to_file_no_args_rectangle(self):
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file()
+
+
 if __name__ == "__main__":
     unittest.main()

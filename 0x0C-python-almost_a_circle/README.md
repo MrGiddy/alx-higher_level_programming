@@ -679,3 +679,31 @@ guillaume@ubuntu:~/$ ./14-main.py
 <class 'str'>
 guillaume@ubuntu:~/$ 
 ```
+
+### 16. JSON string to file
+Update the class ```Base``` by adding the class method ```def save_to_file(cls, list_objs)```: that writes the JSON string representation of ```list_objs``` to a file:
+
+* ```list_objs``` is a list of instances who inherits of ```Base``` - example: list of ```Rectangle``` or list of ```Square``` instances
+* If ```list_objs``` is ```None```, save an empty list
+* The filename must be: ```<Class name>.json``` - example: ```Rectangle.json```
+* You must use the static method ```to_json_string``` (created before)
+* You must overwrite the file if it already exists
+```
+guillaume@ubuntu:~/$ cat 15-main.py
+#!/usr/bin/python3
+""" 15-main """
+from models.rectangle import Rectangle
+
+if __name__ == "__main__":
+
+    r1 = Rectangle(10, 7, 2, 8)
+    r2 = Rectangle(2, 4)
+    Rectangle.save_to_file([r1, r2])
+
+    with open("Rectangle.json", "r") as file:
+        print(file.read())
+
+guillaume@ubuntu:~/$ ./15-main.py
+[{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7}, {"y": 0, "x": 0, "id": 2, "width": 2, "height": 4}]
+guillaume@ubuntu:~/$ 
+```
