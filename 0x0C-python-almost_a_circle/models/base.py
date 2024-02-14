@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Defines class Base """
 import json
+import csv
 
 
 class Base:
@@ -95,5 +96,43 @@ class Base:
             with open(filename, 'r', encoding='utf=8') as f:
                 dicts_list = Base.from_json_string(f.read())
                 return [cls.create(**dct) for dct in dicts_list]
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ Serializes a list of objects to .csv """
+        filename = cls.__name__ + '.csv'
+
+        with open(filename, 'w', newline='', encoding='utf-8') as csv_file:
+            if list_objs:
+                if cls.__name__ == 'Rectangle':
+                    keys = ['id', 'width', 'height', 'x', 'y']
+                elif cls.__name__ == 'Square':
+                    keys = ['id', 'size', 'x', 'y']
+                writer_obj = csv.DictWriter(csv_file, fieldnames=keys)
+                for obj in list_objs:
+                    writer_obj.writerow(obj.to_dictionary())
+            else:
+                csv_file.write('[]')
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ Deserializes from .csv """
+        filename = cls.__name__ + '.csv'
+
+        try:
+            with open(filename, 'r', encoding='utf-8') as csv_file:
+                if cls.__name__ == 'Rectangle':
+                    keys = ['id', 'width', 'height', 'x', 'y']
+                elif cls.__name__ == 'Square':
+                    keys = ['id', 'size', 'x', 'y']
+                reader_obj = csv.DictReader(csv_file, fieldnames=keys)
+                dicts_lst = []
+                for dct in reader_obj:
+                    for key, value in dct.items():
+                        dct[key] = int(value)  # convert value to int
+                    dicts_lst.append(dct)
+                return [cls.create(**dictionary) for dictionary in dicts_lst]
         except FileNotFoundError:
             return []

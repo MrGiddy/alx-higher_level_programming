@@ -303,6 +303,18 @@ class TestBaseCreate(unittest.TestCase):
 
 class TestBaseLoadFromFile(unittest.TestCase):
     """ Test cases for method load_from_file of Base """
+    def tearDown(self):
+        """ Cleanup - Delete files created"""
+        try:
+            os.remove('Rectangle.json')
+        except FileNotFoundError:
+            pass
+
+        try:
+            os.remove("Squre.json")
+        except FileNotFoundError:
+            pass
+
     def test_load_from_file_list_type(self):
         r1 = Rectangle(10, 7, 2, 8)
         Rectangle.save_to_file([r1])
@@ -362,6 +374,87 @@ class TestBaseLoadFromFile(unittest.TestCase):
     def test_load_from_file_two_args(self):
         with self.assertRaises(TypeError):
             Base.load_from_file([], 1)
+
+
+class TestBaseSaveToFileCsv(unittest.TestCase):
+    """ Test cases for save_to_file_csv method of class Base  """
+    @classmethod
+    def tearDown(self):
+        """ Cleanup - Delete files created for test cases """
+        try:
+            os.remove('Rectangle.csv')
+        except FileNotFoundError:
+            pass
+
+        try:
+            os.remove('Square.csv')
+        except FileNotFoundError:
+            pass
+
+        try:
+            os.remove('Base.csv')
+        except FileNotFoundError:
+            pass
+
+    def test_save_to_file_csv_rectangle(self):
+        r1 = Rectangle(10, 7, 2, 8, 3)
+        Rectangle.save_to_file_csv([r1])
+        with open('Rectangle.csv', 'r') as f:
+            self.assertEqual(f.read().strip(), '3,10,7,2,8')
+
+    def test_save_to_file_csv_rectangles(self):
+        r1 = Rectangle(10, 7, 2, 8, 3)
+        r2 = Rectangle(3, 8, 7, 2, 10)
+        Rectangle.save_to_file_csv([r1, r2])
+        with open('Rectangle.csv', 'r') as f:
+            self.assertEqual('3,10,7,2,8', f.readline().strip())
+            self.assertEqual('10,3,8,7,2', f.readline().strip())
+
+    def test_save_to_file_csv_square(self):
+        s1 = Square(10, 7, 2, 8)
+        Square.save_to_file_csv([s1])
+        with open("Square.csv", "r") as f:
+            self.assertEqual("8,10,7,2", f.read().strip())
+
+    def test_save_to_file_csv_squares(self):
+        s1 = Square(10, 7, 2, 8)
+        s2 = Square(8, 2, 7, 10)
+        Square.save_to_file_csv([s1, s2])
+        with open("Square.csv", "r") as f:
+            self.assertEqual('8,10,7,2', f.readline().strip())
+            self.assertEqual('10,8,2,7', f.readline().strip())
+
+#    def test_save_to_file_csv_filename_Base(self):
+#        s1 = Square(10, 7, 2, 8)
+#        Base.save_to_file_csv([s1])
+#        with open("Base.csv", "r") as f:
+#            self.assertTrue("8,10,7,2", f.read())
+
+    def test_save_to_file_csv_overwritten(self):
+        s = Square(9, 2, 39, 2)
+        Square.save_to_file_csv([s])
+        s = Square(10, 7, 2, 8)
+        Square.save_to_file_csv([s])
+        with open("Square.csv", "r") as f:
+            self.assertTrue("8,10,7,2", f.read())
+
+    def test_save_to_file_csv_None(self):
+        Square.save_to_file_csv(None)
+        with open("Square.csv", "r") as f:
+            self.assertEqual("[]", f.read())
+
+    def test_save_to_file_csv_empty_list(self):
+        Square.save_to_file_csv([])
+        with open("Square.csv", "r") as f:
+            self.assertEqual("[]", f.read())
+
+    def test_save_to_file_csv_no_args_passed(self):
+        with self.assertRaises(TypeError):
+            Square.save_to_file()
+
+    def test_save_to_file_csv_exceeding_args(self):
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file([], 0)
 
 
 if __name__ == "__main__":
