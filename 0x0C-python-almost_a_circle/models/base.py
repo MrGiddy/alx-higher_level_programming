@@ -2,6 +2,7 @@
 """ Defines class Base """
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -136,3 +137,37 @@ class Base:
                 return [cls.create(**dictionary) for dictionary in dicts_lst]
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """ Draw Squares and Rectangles """
+        def draw_squares():
+            """ Draw the Square(s) """
+            nonlocal list_squares
+            for sq in list_squares:
+                turtle.penup()
+                turtle.goto(sq.x, sq.y)
+                turtle.pendown()
+                turtle.color('#1ecbe1')
+                for _ in range(4):
+                    turtle.forward(sq.size)
+                    turtle.right(90)
+
+        def draw_rectangles():
+            """ Draw the Rectangle(s) """
+            nonlocal list_rectangles
+            for rect in list_rectangles:
+                turtle.penup()
+                turtle.goto(rect.x, rect.y)
+                turtle.pendown()
+                turtle.color('#e1341e')
+                for _ in range(2):
+                    turtle.forward(rect.width)
+                    turtle.right(90)
+                    turtle.forward(rect.height)
+                    turtle.right(90)
+
+        draw_squares()
+        draw_rectangles()
+        turtle.hideturtle()
+        turtle.done()
