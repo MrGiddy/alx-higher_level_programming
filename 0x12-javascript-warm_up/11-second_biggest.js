@@ -7,8 +7,8 @@ if (process.argv.length < 4) {
 } else {
   const newArgv = process.argv.slice(2);
   for (let i = 0; i < newArgv.length; i++) {
-    parseInt(i);
+    newArgv[i] = parseInt(newArgv[i]);
   }
-  newArgv.sort().reverse();
+  newArgv.sort((a, b) => b - a);
   console.log(newArgv[1]);
 }
