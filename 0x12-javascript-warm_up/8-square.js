@@ -2,16 +2,15 @@
 /*
  * Prints a square
  */
-const firstArg = process.argv[2];
-const parsedNumber = parseInt(firstArg);
+const size = parseInt(process.argv[2]);
 
-if (process.argv.length < 3) {
+if (isNaN(size)) {
   console.log('Missing size');
-} else if (parsedNumber) {
-  for (let i = 0; i < parsedNumber; i++) {
+} else {
+  for (let i = 0; i < size; i++) {
     let row = '';
-    for (let j = 0; j < parsedNumber; j++) {
-      row += '#';
+    for (let j = 0; j < size; j++) {
+      row += 'X';
     }
     console.log(row);
   }
