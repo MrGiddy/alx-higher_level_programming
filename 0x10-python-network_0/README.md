@@ -119,3 +119,57 @@ POST params:
     subject: I will always be here for PLD
 guillaume@ubuntu:~/0x10$ 
 ```
+
+## 6. Find a peak
+**Technical interview preparation**:
+
+* You are not allowed to google anything
+* Whiteboard first
+Write a function that finds **a peak** in a list of unsorted integers.
+
+Prototype: ```def find_peak(list_of_integers)```:
+* You are not allowed to import any module
+* Your algorithm must have the lowest complexity (hint: you don’t need to go through all numbers to find a peak)
+* ```6-peak.py``` must contain the function
+* ```6-peak.txt``` must contain the complexity of your algorithm: ```O(log(n))```, ```O(n)```, ```O(nlog(n))``` or ```O(n2)```
+* **Note**: there may be more than one peak in the list
+```
+guillaume@ubuntu:~/0x10$ cat 6-main.py
+#!/usr/bin/python3
+""" Test function find_peak """
+find_peak = __import__('6-peak').find_peak
+
+print(find_peak([1, 2, 4, 6, 3]))
+print(find_peak([4, 2, 1, 2, 3, 1]))
+print(find_peak([2, 2, 2]))
+print(find_peak([]))
+print(find_peak([-2, -4, 2, 1]))
+print(find_peak([4, 2, 1, 2, 2, 2, 3, 1]))
+
+guillaume@ubuntu:~/0x10$ ./6-main.py
+6
+3
+2
+None
+2
+4
+guillaume@ubuntu:~/0x10$ wc -l 6-peak.txt 
+2 6-peak.txt
+guillaume@ubuntu:~/0x10$ 
+```
+
+## 7. Only status code
+Write a Bash script that sends a request to a URL passed as an argument, and displays only the status code of the response.
+
+* You are not allowed to use any pipe, redirection, etc.
+* You are not allowed to use ```;``` and ```&&```
+* You have to use ```curl```
+Please test your script in the sandbox provided, using the web server running on port 5000
+```
+guillaume@ubuntu:~/0x10$ ./100-status_code.sh 0.0.0.0:5000 ; echo ""
+200
+guillaume@ubuntu:~/0x10$ 
+guillaume@ubuntu:~/0x10$ ./100-status_code.sh 0.0.0.0:5000/nop ; echo ""
+404
+guillaume@ubuntu:~/0x10$ 
+```
