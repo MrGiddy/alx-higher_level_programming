@@ -5,7 +5,7 @@ import urllib.error
 
 
 def main(url):
-    """Displays the body of a http response"""
+    """Sends a GET request and displays the body of the response"""
     try:
         req = urllib.request.Request(url)
         with urllib.request.urlopen(req) as response:
