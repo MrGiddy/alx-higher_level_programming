@@ -6,7 +6,7 @@ import requests
 def main(url):
     """Sends a GET request and displays the value of a header variable"""
     req = requests.get(url)
-    print(req.headers['X-Request-Id'])
+    print(req.headers.get('X-Request-Id'))
 
 
 if __name__ == '__main__':
