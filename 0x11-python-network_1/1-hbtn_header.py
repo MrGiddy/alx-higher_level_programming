@@ -4,7 +4,7 @@ import urllib.request
 
 
 def main(url):
-    """Displays the header value of a response"""
+    """Displays a particular header value of a response"""
     req = urllib.request.Request(url)
     with urllib.request.urlopen(req) as response:
         pass
