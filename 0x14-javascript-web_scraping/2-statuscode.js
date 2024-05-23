@@ -12,5 +12,5 @@ request(url, (err, resp) => {
   // Display the error if it occurred
   if (err) console.log(err);
   // Display the status code of the response
-  console.log(resp.statusCode);
+  console.log('code:', resp.statusCode);
 });
