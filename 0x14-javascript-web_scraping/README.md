@@ -200,4 +200,20 @@ Bib Fortuna
 C-3PO
 Lando Calrissian
 guillaume@ubuntu:~/0x14$ 
-``
+```
+
+## 8. Right order
+Write a script that prints all characters of a Star Wars movie:
+
+* The first argument is the Movie ID - example: ```3``` = “Return of the Jedi”
+* Display one character name by line ***in the same order of the list “characters” in the ```/films/``` response******
+* You must use the [Star wars API](https://swapi-api.alx-tools.com/)
+* You must use the module ```request```
+```
+Write a script that prints all characters of a Star Wars movie:
+
+The first argument is the Movie ID - example: 3 = “Return of the Jedi”
+Display one character name by line in the same order of the list “characters” in the /films/ response
+You must use the Star wars API
+You must use the module request
+```
